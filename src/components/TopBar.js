@@ -5,9 +5,9 @@ export default function TopBar({ position }) {
   const router = useRouter();
 
   return (
-    <Flex color="white" w="100%" h="150px" position={position}>
+    <Flex color="white" w="15%" h="10%" position={position} px="6" py="10">
       <Button
-        size="200px"
+        size="lg"
         variant="ghost"
         _hover="none"
         _focus="none"
