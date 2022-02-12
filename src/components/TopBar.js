@@ -7,13 +7,13 @@ export default function TopBar({ position }) {
   return (
     <Flex color="white" w="100%" h="150px" position={position}>
       <Button
-        size="300px"
+        size="200px"
         variant="ghost"
         _hover="none"
         _focus="none"
         onClick={() => router.push("/")}
       >
-        <Image boxSize="300px" src={logo.src} />
+        <Image boxSize="200px" src={logo.src} />
       </Button>
     </Flex>
   );
