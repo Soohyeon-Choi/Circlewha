@@ -8,6 +8,7 @@ export default function GridFilter({ arr, onChange }) {
           arr.map((filter, index) => (
             <Button
               width="100%"
+              key={index}
               onClick={() => onChange(index)}
               padding="1rem"
               backgroundColor="#eaeeea"
