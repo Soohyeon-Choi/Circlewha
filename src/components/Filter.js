@@ -7,6 +7,7 @@ import {
   SimpleGrid,
   Flex,
 } from "@chakra-ui/react";
+import React from "react";
 import { BsArrowClockwise } from "react-icons/bs";
 
 export default function Filter() {
@@ -46,7 +47,7 @@ export default function Filter() {
             단과대학
           </Text>
         </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
+        <GridItem colSpan={3} bg="#006540" borderRadius="7px">
           <Text fontweight="bold" color="white" textAlign="center">
             학부/전공
           </Text>
@@ -61,7 +62,7 @@ export default function Filter() {
             필수활동학기
           </Text>
         </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
+        <GridItem bg="#006540" borderRadius="7px">
           <Text fontweight="bold" color="white" textAlign="center">
             기타조건
           </Text>
@@ -71,15 +72,47 @@ export default function Filter() {
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
-        ></GridItem>
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {category.map((filter, index) => (
+              <Button
+                key={index}
+                width="100%"
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
         <GridItem
           colSpan={2}
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
-        ></GridItem>
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {college.map((filter, index) => (
+              <Button
+                key={index}
+                width="100%"
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
         <GridItem
-          colSpan={2}
+          colSpan={3}
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
@@ -102,7 +135,7 @@ export default function Filter() {
             ))}
           </SimpleGrid>
         </GridItem>
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px">
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
           <SimpleGrid column={1}>
             {etc.map((filter) => (
               <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
