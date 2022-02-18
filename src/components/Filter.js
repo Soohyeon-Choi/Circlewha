@@ -1,17 +1,85 @@
-import { Grid, GridItem, Text, Button, ButtonGroup } from "@chakra-ui/react";
+import {
+  Grid,
+  GridItem,
+  Text,
+  Button,
+  ButtonGroup,
+  SimpleGrid,
+  Flex,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { BsArrowClockwise } from "react-icons/bs";
 
 export default function Filter() {
+  const [qualQuery, setQualQuery] = useState([-1, -1, -1, -1]);
+  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
+  const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1, -1]);
+  const [interestQuery, setInterestQuery] = useState([]);
+
+  const onQualChange = (index) => {
+    if (qualQuery[index] == -1) {
+      qualQuery[index] = 1;
+      setQualQuery(qualQuery);
+    } else if (qualQuery[index] == 1) {
+      qualQuery[index] = -1;
+      setQualQuery(qualQuery);
+    }
+    console.log(qualQuery);
+  };
+
+  const onSemChange = (index) => {
+    if (semQuery[index] == -1) {
+      semQuery[index] = 1;
+      setSemQuery(semQuery);
+    } else if (semQuery[index] == 1) {
+      semQuery[index] = -1;
+      setSemQuery(semQuery);
+    }
+    console.log(semQuery);
+  };
+
+  const onEtcQuery = (index) => {
+    if (etcQuery[index] == -1) {
+      etcQuery[index] = 1;
+      setEtcQuery(etcQuery);
+    } else if (etcQuery[index] == 1) {
+      etcQuery[index] = -1;
+      setEtcQuery(etcQuery);
+    }
+    console.log(etcQuery);
+  };
+
+  const onClick = (filter, num) => {
+    if (interestQuery.includes(filter)) {
+      setInterestQuery(query.filter((item) => item != filter));
+    } else if (interestQuery.includes(num)) {
+      setInterestQuery(query.filter((item) => item != num));
+    } else {
+      if (filter == "전체") {
+        setInterestQuery(interestQuery.concat(num));
+      } else {
+        setInterestQuery(interestQuery.concat(filter));
+      }
+    }
+  };
+  console.log(interestQuery);
+
   return (
     <>
-      <ButtonGroup spacing={3} size="md" px="80%">
-        <Button leftIcon={<BsArrowClockwise />} color="#006540" variant="ghost">
-          초기화
-        </Button>
-        <Button color="#006540" variant="ghost">
-          전체보기
-        </Button>
-      </ButtonGroup>
+      <Flex justifyContent="end">
+        <ButtonGroup spacing={3} size="md">
+          <Button
+            leftIcon={<BsArrowClockwise />}
+            color="#006540"
+            variant="ghost"
+          >
+            초기화
+          </Button>
+          <Button color="#006540" variant="ghost">
+            전체보기
+          </Button>
+        </ButtonGroup>
+      </Flex>
 
       <Grid
         w="100%"
@@ -19,7 +87,7 @@ export default function Filter() {
         px="3%"
         py="2%"
         templateRows="repeat(17, 1fr)"
-        templateColumns="repeat(11, 1fr)"
+        templateColumns="repeat(10, 1fr)"
         gap={1}
       >
         <GridItem colSpan={2} bg="#006540" borderRadius="7px">
@@ -42,7 +110,7 @@ export default function Filter() {
             지원조건
           </Text>
         </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
+        <GridItem bg="#006540" borderRadius="7px">
           <Text fontweight="bold" color="white" textAlign="center">
             필수활동학기
           </Text>
@@ -52,18 +120,95 @@ export default function Filter() {
             기타조건
           </Text>
         </GridItem>
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px" />
+        <GridItem
+          colSpan={2}
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+        ></GridItem>
+        <GridItem
+          colSpan={2}
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+        ></GridItem>
+        <GridItem
+          colSpan={2}
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+        ></GridItem>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
+          <SimpleGrid column={1}>
+            {cond.map((filter, index) => (
+              <Button
+                width="100%"
+                onClick={() => onQualChange(index)}
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
+          <SimpleGrid column={1}>
+            {sem.map((filter, index) => (
+              <Button
+                key={filter}
+                width="100%"
+                onClick={() => onSemChange(index)}
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px">
+          <SimpleGrid column={1}>
+            {etc.map((filter, index) => (
+              <Button
+                width="100%"
+                onClick={() => onEtcQuery(index)}
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
 
-        <GridItem colSpan={11} bg="#006540" borderRadius="7px">
+        <GridItem colSpan={10} bg="#006540" borderRadius="7px">
           <Text fontweight="bold" color="white" textAlign="center">
             관심분야
           </Text>
         </GridItem>
+        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+          <Text fontweight="bold" color="#006540" textAlign="center">
+            기타
+          </Text>
+        </GridItem>
+        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+          <Text fontweight="bold" color="#006540" textAlign="center">
+            뉴미디어
+          </Text>
+        </GridItem>
+        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+          <Text fontweight="bold" color="#006540" textAlign="center">
+            문화
+          </Text>
+        </GridItem>
+
+        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+          <Text fontweight="bold" color="#006540" textAlign="center">
+            봉사
+          </Text>
+        </GridItem>
+
         <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
           <Text fontweight="bold" color="#006540" textAlign="center">
             스포츠
@@ -76,7 +221,13 @@ export default function Filter() {
         </GridItem>
         <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
           <Text fontweight="bold" color="#006540" textAlign="center">
-            학회
+            종교
+          </Text>
+        </GridItem>
+
+        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+          <Text fontweight="bold" color="#006540" textAlign="center">
+            책
           </Text>
         </GridItem>
 
@@ -88,61 +239,151 @@ export default function Filter() {
 
         <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
           <Text fontweight="bold" color="#006540" textAlign="center">
-            책
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            뉴미디어
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            공연
+            학회
           </Text>
         </GridItem>
 
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            토론
-          </Text>
+        <GridItem
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {up_1.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
         </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            취미
-          </Text>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
+          <SimpleGrid column={1}>
+            {up_2.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
         </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            봉사
-          </Text>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
+          <SimpleGrid column={1}>
+            {up_3.map((filter) => (
+              <Button
+                width="100%"
+                onClick={() => onClick(filter)}
+                padding="1rem"
+                backgroundColor="#eaeeea"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
         </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            종교
-          </Text>
+        <GridItem
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {up_4.map((filter) => (
+              <Button
+                width="100%"
+                onClick={() => onClick(filter, 4)}
+                padding="1rem"
+              >
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
         </GridItem>
-
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" />
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
+          <SimpleGrid column={1}>
+            {up_5.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {up_6.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
+          <SimpleGrid column={1}>
+            {up_7.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
+          <SimpleGrid column={1}>
+            {up_8.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {up_9.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
+        <GridItem
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="scroll"
+        >
+          <SimpleGrid column={1}>
+            {up_10.map((filter) => (
+              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
+                {filter}
+              </Button>
+            ))}
+          </SimpleGrid>
+        </GridItem>
       </Grid>
     </>
   );
 }
 
-const belong = [
+const category = [
+  "전체",
   "중앙동아리",
   "단과대학 소속",
   "학부/전공 소속",
@@ -195,11 +436,11 @@ const major_9 = ["융합보건학과"];
 
 const major_13 = ["뇌 인지과학과", "국제학부"];
 
-const cond = ["새내기만", "학번무관", "전공무관"];
+const cond = ["해당없음", "새내기만", "학번무관", "전공무관"];
 
-const sem = ["1학기", "2학기", "3학기", "4학기"];
+const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
 
-const etc = ["회비X", "동방O", "면접X", "상시모집"];
+const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
 
 const up = [
   "기타",
@@ -215,6 +456,7 @@ const up = [
 ];
 
 const up_1 = [
+  "전체",
   "캠페인",
   "창업",
   "홍보",
@@ -225,15 +467,23 @@ const up_1 = [
   "사회운동",
 ];
 
-const up_2 = ["카드뉴스", "뉴스레터", "팟캐스트", "영상"];
+const up_2 = ["전체", "카드뉴스", "뉴스레터", "팟캐스트", "영상"];
 
-const up_3 = ["차", "문화교류", "관람", "친목"];
+const up_3 = ["전체", "차", "문화교류", "관람", "친목"];
 
-const up_4 = ["의료봉사", "교육봉사", "기타봉사", "예술봉사", "해외봉사"];
+const up_4 = [
+  "전체",
+  "의료봉사",
+  "교육봉사",
+  "기타봉사",
+  "예술봉사",
+  "해외봉사",
+];
 
 const up_5 = ["전체"];
 
 const up_6 = [
+  "전체",
   "사진",
   "밴드/오케스트라",
   "국악/풍물",
@@ -248,11 +498,12 @@ const up_6 = [
   "악기",
 ];
 
-const up_7 = ["기독교"];
+const up_7 = ["전체", "기독교"];
 
-const up_8 = ["교지/잡지/신문", "문학/문집", "신문"];
+const up_8 = ["전체", "교지/잡지/신문", "문학/문집", "신문"];
 
 const up_9 = [
+  "전체",
   "언어",
   "교육",
   "보건/의료",
@@ -274,6 +525,7 @@ const up_9 = [
 ];
 
 const up_10 = [
+  "전체",
   "경영",
   "기술과학",
   "사회과학",
