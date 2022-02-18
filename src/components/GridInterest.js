@@ -1,4 +1,5 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function GridInterest({
   arr,
@@ -8,16 +9,20 @@ export default function GridInterest({
 }) {
   const onClick = (filter, num) => {
     if (interestQuery) {
-      if (interestQuery.includes(filter)) {
-        setInterestQuery(interestQuery.filter((item) => item != filter));
-      } else if (interestQuery.includes(num)) {
-        setInterestQuery(interestQuery.filter((item) => item != num));
+      var filt = {
+        id: num,
+        topic: filter,
+      };
+      if (
+        interestQuery.some((v) => v.topic === filt.topic && v.id === filt.id)
+      ) {
+        setInterestQuery(
+          interestQuery.filter(
+            (item) => item.topic != filt.topic || item.id != filt.id
+          )
+        );
       } else {
-        if (filter == "전체") {
-          setInterestQuery(interestQuery.concat(num));
-        } else {
-          setInterestQuery(interestQuery.concat(filter));
-        }
+        setInterestQuery(interestQuery.concat(filt));
       }
     }
   };
@@ -33,11 +38,12 @@ export default function GridInterest({
     >
       <SimpleGrid column={1}>
         {arr &&
-          arr.map((filter) => (
+          arr.map((filter, index) => (
             <Button
               onClick={() => onClick(filter, num)}
               width="100%"
               padding="1rem"
+              key={index}
               backgroundColor="#eaeeea"
             >
               {filter}
