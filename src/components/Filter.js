@@ -13,10 +13,11 @@ import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
 
 export default function Filter() {
+  const [interestQuery, setInterestQuery] = useState([]);
   const [qualQuery, setQualQuery] = useState([-1, -1, -1, -1]);
   const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1, -1]);
-  const [interestQuery, setInterestQuery] = useState([]);
+
   console.log(interestQuery);
 
   const onQualChange = (index) => {
@@ -109,73 +110,28 @@ export default function Filter() {
 
         <FilterName col={10} name="관심분야" />
 
-        {up.map((filter) => (
+        {up.map((filter, index) => (
           <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-            <Text fontweight="bold" color="#006540" textAlign="center">
+            <Text
+              fontweight="bold"
+              color="#006540"
+              textAlign="center"
+              key={index}
+            >
               {filter}
             </Text>
           </GridItem>
         ))}
-        <GridInterest
-          arr={up_1}
-          num={1}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_2}
-          num={2}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_3}
-          num={3}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_4}
-          num={4}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_5}
-          num={5}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_6}
-          num={6}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_7}
-          num={7}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_8}
-          num={8}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_9}
-          num={9}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
-        <GridInterest
-          arr={up_10}
-          num={10}
-          interestQuery={interestQuery}
-          setInterestQuery={setInterestQuery}
-        />
+
+        {up_list.map((list, index) => (
+          <GridInterest
+            arr={list}
+            key={index}
+            num={index + 1}
+            interestQuery={interestQuery}
+            setInterestQuery={setInterestQuery}
+          />
+        ))}
       </Grid>
     </>
   );
@@ -242,6 +198,7 @@ const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
 const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
 
 const list = ["up_1", "up_2", "up_3"];
+
 const up = [
   "기타",
   "뉴미디어",
@@ -254,83 +211,68 @@ const up = [
   "학술",
   "학회",
 ];
-
-const up_1 = [
-  "전체",
-  "캠페인",
-  "창업",
-  "홍보",
-  "답사",
-  "캠페인",
-  "기획",
-  "PT/PR",
-  "사회운동",
-];
-
-const up_2 = ["전체", "카드뉴스", "뉴스레터", "팟캐스트", "영상"];
-
-const up_3 = ["전체", "차", "문화교류", "관람", "친목"];
-
-const up_4 = [
-  "전체",
-  "의료봉사",
-  "교육봉사",
-  "기타봉사",
-  "예술봉사",
-  "해외봉사",
-];
-
-const up_5 = ["전체"];
-
-const up_6 = [
-  "전체",
-  "사진",
-  "밴드/오케스트라",
-  "국악/풍물",
-  "연극/뮤지컬",
-  "패션",
-  "개그",
-  "영화",
-  "노래",
-  "댄스",
-  "디자인",
-  "그림",
-  "악기",
-];
-
-const up_7 = ["전체", "기독교"];
-
-const up_8 = ["전체", "교지/잡지/신문", "문학/문집", "신문"];
-
-const up_9 = [
-  "전체",
-  "언어",
-  "교육",
-  "보건/의료",
-  "답사",
-  "미술",
-  "사학",
-  "건축",
-  "경영/경제",
-  "언어",
-  "토론",
-  "법학",
-  "기술과학",
-  "자연과학",
-  "사회과학",
-  "IT",
-  "인문학",
-  "교육학",
-  "여성학",
-];
-
-const up_10 = [
-  "전체",
-  "경영",
-  "기술과학",
-  "사회과학",
-  "보건/의료",
-  "법학",
-  "경영/경제",
-  "미술",
+const up_list = [
+  [
+    "전체",
+    "캠페인",
+    "창업",
+    "홍보",
+    "답사",
+    "캠페인",
+    "기획",
+    "PT/PR",
+    "사회운동",
+  ],
+  ["전체", "카드뉴스", "뉴스레터", "팟캐스트", "영상"],
+  ["전체", "차", "문화교류", "관람", "친목"],
+  ["전체", "의료봉사", "교육봉사", "기타봉사", "예술봉사", "해외봉사"],
+  ["전체"],
+  [
+    "전체",
+    "사진",
+    "밴드/오케스트라",
+    "국악/풍물",
+    "연극/뮤지컬",
+    "패션",
+    "개그",
+    "영화",
+    "노래",
+    "댄스",
+    "디자인",
+    "그림",
+    "악기",
+  ],
+  ["전체", "기독교"],
+  ["전체", "교지/잡지/신문", "문학/문집", "신문"],
+  [
+    "전체",
+    "언어",
+    "교육",
+    "보건/의료",
+    "답사",
+    "미술",
+    "사학",
+    "건축",
+    "경영/경제",
+    "언어",
+    "토론",
+    "법학",
+    "기술과학",
+    "자연과학",
+    "사회과학",
+    "IT",
+    "인문학",
+    "교육학",
+    "여성학",
+  ],
+  [
+    "전체",
+    "경영",
+    "기술과학",
+    "사회과학",
+    "보건/의료",
+    "법학",
+    "경영/경제",
+    "미술",
+  ],
 ];
