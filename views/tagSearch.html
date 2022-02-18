@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>WEB1 - tagSearch</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <h1>tagSearch</h1>
+  <ul>
+    <li><a href="/">index</a></li>
+  </ul>
+
+  <p>
+    <br>
+    <br>
+  <form method="post">
+    <div>
+      <label>소속</label>
+      <br>
+      <label><input type="radio" name="radios" value="1">중앙동아리 소속</label>
+      <label><input type="radio" name="radios" value="1">단과대학 소속</label>
+      <label><input type="radio" name="radios" value="1">단대/전공 소속</label>
+      <label><input type="radio" name="radios" value="1">기타 소속</label>
+      <label><input type="radio" name="radios" value="1">무소속</label>
+      <label><input type="radio" name="radios" value="1">연합동아리 소속</label>
+    </div>
+    <br>
+    <div>
+      <label>지원조건</label>
+      <br>
+      <label><input type="checkbox" name="qual_new" value="1">새내기만</label>
+      <label><input type="checkbox" name="qual_allgrade" value="1">학번무관</label>
+      <label><input type="checkbox" name="qual_allmajor" value="1">전공무관</label>
+    </div>
+    <br>
+    <div>
+      <label>필수활동학기</label>
+      <br>
+      <label><input type="radio" name="howlong" value="1">1학기</label>
+      <label><input type="radio" name="howlong" value="2">2학기</label>
+      <label><input type="radio" name="howlong" value="3">3학기</label>
+      <label><input type="radio" name="howlong" value="4">4학기</label>
+    </div>
+  </form>
+  </p>
+  <p>
+    <h2>result page</h2>
+    <p>id: ${id}</p>
+    <p>age: ${age}</p>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "backend-circlewha",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "axios": "^0.25.0",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "document": "^0.4.7",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "framer-motion": "^5.6.0",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "mysql": "^2.15.0",
+    "next": "12.0.9",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "sanitize-html": "1.18.2"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.9"
+  },
+  "homepage": "https://github.com/web-n/Nodejs#readme"
+}
