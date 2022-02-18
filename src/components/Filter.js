@@ -4,17 +4,20 @@ import {
   Text,
   Button,
   ButtonGroup,
-  SimpleGrid,
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsArrowClockwise } from "react-icons/bs";
+import GridInterest from "./GridInterest";
+import FilterName from "./FilterName";
+import GridFilter from "./GridFilter";
 
 export default function Filter() {
   const [qualQuery, setQualQuery] = useState([-1, -1, -1, -1]);
   const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1, -1]);
   const [interestQuery, setInterestQuery] = useState([]);
+  console.log(interestQuery);
 
   const onQualChange = (index) => {
     if (qualQuery[index] == -1) {
@@ -38,7 +41,7 @@ export default function Filter() {
     console.log(semQuery);
   };
 
-  const onEtcQuery = (index) => {
+  const onEtcChange = (index) => {
     if (etcQuery[index] == -1) {
       etcQuery[index] = 1;
       setEtcQuery(etcQuery);
@@ -48,21 +51,6 @@ export default function Filter() {
     }
     console.log(etcQuery);
   };
-
-  const onClick = (filter, num) => {
-    if (interestQuery.includes(filter)) {
-      setInterestQuery(query.filter((item) => item != filter));
-    } else if (interestQuery.includes(num)) {
-      setInterestQuery(query.filter((item) => item != num));
-    } else {
-      if (filter == "전체") {
-        setInterestQuery(interestQuery.concat(num));
-      } else {
-        setInterestQuery(interestQuery.concat(filter));
-      }
-    }
-  };
-  console.log(interestQuery);
 
   return (
     <>
@@ -80,7 +68,6 @@ export default function Filter() {
           </Button>
         </ButtonGroup>
       </Flex>
-
       <Grid
         w="100%"
         h="100%"
@@ -90,36 +77,13 @@ export default function Filter() {
         templateColumns="repeat(10, 1fr)"
         gap={1}
       >
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            소속
-          </Text>
-        </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            단과대학
-          </Text>
-        </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            학부/전공
-          </Text>
-        </GridItem>
-        <GridItem bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            지원조건
-          </Text>
-        </GridItem>
-        <GridItem bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            필수활동학기
-          </Text>
-        </GridItem>
-        <GridItem colSpan={2} bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            기타조건
-          </Text>
-        </GridItem>
+        <FilterName col={2} name="소속" />
+        <FilterName col={2} name="단과대학" />
+        <FilterName col={3} name="학부/전공" />
+        <FilterName col={1} name="지원조건" />
+        <FilterName col={1} name="필수활동학기" />
+        <FilterName col={1} name="기타조건" />
+
         <GridItem
           colSpan={2}
           rowSpan={7}
@@ -133,250 +97,85 @@ export default function Filter() {
           borderRadius="7px"
         ></GridItem>
         <GridItem
-          colSpan={2}
+          colSpan={3}
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
         ></GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
-          <SimpleGrid column={1}>
-            {cond.map((filter, index) => (
-              <Button
-                width="100%"
-                onClick={() => onQualChange(index)}
-                padding="1rem"
-                backgroundColor="#eaeeea"
-              >
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
-          <SimpleGrid column={1}>
-            {sem.map((filter, index) => (
-              <Button
-                key={filter}
-                width="100%"
-                onClick={() => onSemChange(index)}
-                padding="1rem"
-                backgroundColor="#eaeeea"
-              >
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px">
-          <SimpleGrid column={1}>
-            {etc.map((filter, index) => (
-              <Button
-                width="100%"
-                onClick={() => onEtcQuery(index)}
-                padding="1rem"
-                backgroundColor="#eaeeea"
-              >
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
 
-        <GridItem colSpan={10} bg="#006540" borderRadius="7px">
-          <Text fontweight="bold" color="white" textAlign="center">
-            관심분야
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            기타
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            뉴미디어
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            문화
-          </Text>
-        </GridItem>
+        <GridFilter arr={cond} onChange={onQualChange} />
+        <GridFilter arr={sem} onChange={onSemChange} />
+        <GridFilter arr={etc} onChange={onEtcChange} />
 
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            봉사
-          </Text>
-        </GridItem>
+        <FilterName col={10} name="관심분야" />
 
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            스포츠
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            예술
-          </Text>
-        </GridItem>
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            종교
-          </Text>
-        </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            책
-          </Text>
-        </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            학술
-          </Text>
-        </GridItem>
-
-        <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-          <Text fontweight="bold" color="#006540" textAlign="center">
-            학회
-          </Text>
-        </GridItem>
-
-        <GridItem
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-          h="13rem"
-          overflowX="hidden"
-          overflowY="scroll"
-        >
-          <SimpleGrid column={1}>
-            {up_1.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
-          <SimpleGrid column={1}>
-            {up_2.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
-          <SimpleGrid column={1}>
-            {up_3.map((filter) => (
-              <Button
-                width="100%"
-                onClick={() => onClick(filter)}
-                padding="1rem"
-                backgroundColor="#eaeeea"
-              >
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-          h="13rem"
-          overflowX="hidden"
-          overflowY="scroll"
-        >
-          <SimpleGrid column={1}>
-            {up_4.map((filter) => (
-              <Button
-                width="100%"
-                onClick={() => onClick(filter, 4)}
-                padding="1rem"
-              >
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
-          <SimpleGrid column={1}>
-            {up_5.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-          h="13rem"
-          overflowX="hidden"
-          overflowY="scroll"
-        >
-          <SimpleGrid column={1}>
-            {up_6.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
-          <SimpleGrid column={1}>
-            {up_7.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px" h="13rem">
-          <SimpleGrid column={1}>
-            {up_8.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-          h="13rem"
-          overflowX="hidden"
-          overflowY="scroll"
-        >
-          <SimpleGrid column={1}>
-            {up_9.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
-        <GridItem
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-          h="13rem"
-          overflowX="hidden"
-          overflowY="scroll"
-        >
-          <SimpleGrid column={1}>
-            {up_10.map((filter) => (
-              <Button width="100%" padding="1rem" backgroundColor="#eaeeea">
-                {filter}
-              </Button>
-            ))}
-          </SimpleGrid>
-        </GridItem>
+        {up.map((filter) => (
+          <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+            <Text fontweight="bold" color="#006540" textAlign="center">
+              {filter}
+            </Text>
+          </GridItem>
+        ))}
+        <GridInterest
+          arr={up_1}
+          num={1}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_2}
+          num={2}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_3}
+          num={3}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_4}
+          num={4}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_5}
+          num={5}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_6}
+          num={6}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_7}
+          num={7}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_8}
+          num={8}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_9}
+          num={9}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
+        <GridInterest
+          arr={up_10}
+          num={10}
+          interestQuery={interestQuery}
+          setInterestQuery={setInterestQuery}
+        />
       </Grid>
     </>
   );
@@ -442,6 +241,7 @@ const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
 
 const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
 
+const list = ["up_1", "up_2", "up_3"];
 const up = [
   "기타",
   "뉴미디어",
