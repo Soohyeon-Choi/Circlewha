@@ -1,4 +1,5 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
+import CheckFilter from "./CheckFilter";
 
 export default function GridFilter({ arr, onChange }) {
   return (
@@ -6,15 +7,7 @@ export default function GridFilter({ arr, onChange }) {
       <SimpleGrid column={1}>
         {arr &&
           arr.map((filter, index) => (
-            <Button
-              width="100%"
-              key={index}
-              onClick={() => onChange(index)}
-              padding="1rem"
-              backgroundColor="#eaeeea"
-            >
-              {filter}
-            </Button>
+            <CheckFilter filter={filter} index={index} onChange={onChange} />
           ))}
       </SimpleGrid>
     </GridItem>

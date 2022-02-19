@@ -104,7 +104,12 @@ export default function Filter() {
           borderRadius="7px"
         ></GridItem>
 
-        <GridFilter arr={cond} onChange={onQualChange} />
+        <GridFilter
+          arr={cond}
+          onChange={onQualChange}
+          query={qualQuery}
+          setquery={setQualQuery}
+        />
         <GridFilter arr={sem} onChange={onSemChange} />
         <GridFilter arr={etc} onChange={onEtcChange} />
 
