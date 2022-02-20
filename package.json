@@ -2,16 +2,21 @@
   "name": "circlewha",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 5000",
+    "app": "node app"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "axios": "^0.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
     "framer-motion": "^5.6.0",
+    "http-proxy-middleware": "^2.0.3",
+    "mysql": "^2.18.1",
     "next": "12.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2",
