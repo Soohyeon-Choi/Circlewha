@@ -14,9 +14,9 @@ import GridFilter from "./GridFilter";
 
 export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
-  const [qualQuery, setQualQuery] = useState([-1, -1, -1, -1]);
-  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
-  const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1, -1]);
+  const [qualQuery, setQualQuery] = useState([-1, -1, -1]);
+  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1]);
+  const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
 
   console.log(interestQuery);
 
@@ -196,13 +196,11 @@ const major_9 = ["융합보건학과"];
 
 const major_13 = ["뇌 인지과학과", "국제학부"];
 
-const cond = ["해당없음", "새내기만", "학번무관", "전공무관"];
+const cond = ["새내기만", "학번무관", "전공무관"];
 
-const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
+const sem = ["1학기", "2학기", "3학기", "4학기"];
 
-const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
-
-const list = ["up_1", "up_2", "up_3"];
+const etc = ["회비X", "동방O", "면접X", "상시모집"];
 
 const up = [
   "기타",
@@ -216,6 +214,7 @@ const up = [
   "학술",
   "학회",
 ];
+
 const up_list = [
   [
     "전체",

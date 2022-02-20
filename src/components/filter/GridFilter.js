@@ -1,5 +1,5 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckFilter from "./CheckFilter";
+import CheckFilter from "./FilterButton";
 
 export default function GridFilter({ arr, onChange }) {
   return (

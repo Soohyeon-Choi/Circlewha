@@ -11,7 +11,9 @@ export default function GridFilter({ filter, index, onChange }) {
         onChange(index);
       }}
       padding="1rem"
-      backgroundColor={checked == false ? "#eaeeea" : "#ffd400"}
+      _hover={{ backgroundColor: "#c6cdb5" }}
+      backgroundColor={checked == false ? "#eaeeea" : "#9cb596"}
+      // color={checked == false ? "#000000" : "#ffffff"}
     >
       {filter}
     </Button>
