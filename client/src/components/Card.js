@@ -9,22 +9,26 @@ export default function Card({ value }) {
     title: '',
     tag_all: ''
   }])
-  
-  useEffect(async() => {
-    try{
+
+  const [lastIdx, setLastIdx] = useState(0);
+
+  useEffect(async () => {
+    try {
       const res = await axios.post('/tagSearch')
-      const _inputData = await res.data.map((rowData) => ({
-              id: rowData.id,
-              title: rowData.title,
-              tag_all: rowData.tag_all
-            })
+      const _inputData = await res.data.map((rowData) => (
+        setLastIdx(lastIdx + 1),
+        {
+          id: rowData.id,
+          title: rowData.title,
+          tag_all: rowData.tag_all
+        })
       )
       setInputData(inputData.concat(_inputData));
       console.log('inputData :: ', inputData);
-    } catch(e){
+    } catch (e) {
       console.error(e.message)
     }
-  },[])
+  }, [])
 
   return (
     <Flex
@@ -46,9 +50,9 @@ export default function Card({ value }) {
         h="100%"
         textAlign="center"
       >
-        <Text fontWeight="bold" fontSize="4xl" mt="40%">
-          title
-        </Text>
+            <Text fontWeight="bold" fontSize="4xl" mt="40%">
+              {rowData[0].title}
+            </Text>
       </Box>
       <Box borderRadius="10%" bgColor="#eaeeea">
         <Text color="#006540">attribute</Text>
