@@ -18,7 +18,6 @@ export default function Card({ value }) {
         borderRadius="50%"
         borderWidth="0.3rem"
         borderColor="#006540"
-        backgroundColor="#fffecf"
         w="100%"
         h="100%"
         textAlign="center"

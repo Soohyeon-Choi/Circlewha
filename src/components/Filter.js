@@ -85,18 +85,21 @@ export default function Filter() {
         <FilterName col={1} name="필수활동학기" />
         <FilterName col={1} name="기타조건" />
 
+        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px">
+          {category.map((filter, index) => (
+            <Button width="100%" key={index} bg="#eaeeea">
+              {filter}
+            </Button>
+          ))}
+        </GridItem>
+
         <GridItem
           colSpan={2}
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
         ></GridItem>
-        <GridItem
-          colSpan={2}
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-        ></GridItem>
+
         <GridItem
           colSpan={3}
           rowSpan={7}
@@ -164,38 +167,35 @@ const college = [
   "호크마교양대학",
 ];
 
-const major_1 = [
-  "국어국문학과",
-  "불어불문학과",
-  "영어영문학과",
-  "사학과",
-  "철학과",
+const major = [
+  ["국어국문학과", "불어불문학과", "영어영문학과", "사학과", "철학과"],
+  ["심리학과", "행정학과", "커뮤니케이션 미디어학부"],
+  ["화학 나노과학전공", "생명과학전공"],
+  [
+    "컴퓨터공학과",
+    "사이버보안전공",
+    "전자전기공학과",
+    "식품공학과",
+    "화학신소재공학과",
+    "기후 에너지시스템공학과",
+  ],
+  [""],
+  ["디자인학부"],
+  [""],
+  [""],
+  ["융합보건학과"],
+  [""],
+  [""],
+  [""],
+  ["뇌 인지과학과", "국제학부"],
+  [""],
 ];
 
-const major_2 = ["심리학과", "행정학과", "커뮤니케이션 미디어학부"];
+const cond = ["새내기만", "학번무관", "전공무관"];
 
-const major_3 = ["화학 나노과학전공", "생명과학전공"];
+const sem = ["1학기", "2학기", "3학기", "4학기"];
 
-const major_4 = [
-  "컴퓨터공학과",
-  "사이버보안전공",
-  "전자전기공학과",
-  "식품공학과",
-  "화학신소재공학과",
-  "기후 에너지시스템공학과",
-];
-
-const major_6 = ["디자인학부"];
-
-const major_9 = ["융합보건학과"];
-
-const major_13 = ["뇌 인지과학과", "국제학부"];
-
-const cond = ["해당없음", "새내기만", "학번무관", "전공무관"];
-
-const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
-
-const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
+const etc = ["회비X", "동방O", "면접X", "상시모집"];
 
 const list = ["up_1", "up_2", "up_3"];
 
