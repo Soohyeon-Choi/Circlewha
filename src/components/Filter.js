@@ -11,14 +11,15 @@ import { BsArrowClockwise } from "react-icons/bs";
 import GridInterest from "./GridInterest";
 import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
+import axios from 'axios';
 
 export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
-  const [qualQuery, setQualQuery] = useState([-1, -1, -1, -1]);
-  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
-  const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1, -1]);
+  const [qualQuery, setQualQuery] = useState([-1, -1, -1]);
+  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1]);
+  const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
 
-  console.log(interestQuery);
+  //console.log(interestQuery);
 
   const onQualChange = (index) => {
     if (qualQuery[index] == -1) {
@@ -28,7 +29,7 @@ export default function Filter() {
       qualQuery[index] = -1;
       setQualQuery(qualQuery);
     }
-    console.log(qualQuery);
+    //console.log(qualQuery);
   };
 
   const onSemChange = (index) => {
@@ -39,7 +40,7 @@ export default function Filter() {
       semQuery[index] = -1;
       setSemQuery(semQuery);
     }
-    console.log(semQuery);
+    //console.log(semQuery);
   };
 
   const onEtcChange = (index) => {
@@ -50,8 +51,35 @@ export default function Filter() {
       etcQuery[index] = -1;
       setEtcQuery(etcQuery);
     }
-    console.log(etcQuery);
+    //console.log(etcQuery);
   };
+
+  const iArr = [];
+  for (var key in interestQuery) {
+    for (var key2 in interestQuery[key]) {
+      if (key2 == 'id') {
+        var v1 = interestQuery[key][key2];
+      }
+      else {
+        var v2 = interestQuery[key][key2];
+      }
+    }
+    iArr.push([v1, v2]);
+  }
+
+  const onClick = async () => {
+    axios.post('http://localhost:3060/tagSearch', {
+      "test": "test!",
+      "qual": qualQuery,
+      "sem": semQuery,
+      "etc": etcQuery,
+      "interest": iArr
+    },
+      {headers: { "Content-Type": `application/json` }
+    }).then((res) => {
+        console.log(res);
+      })
+  }
 
   return (
     <>
@@ -66,6 +94,13 @@ export default function Filter() {
           </Button>
           <Button color="#006540" variant="ghost">
             전체보기
+          </Button>
+          <Button
+            onClick={onClick}
+            color="#006540"
+            variant="ghost"
+          >
+            선택완료
           </Button>
         </ButtonGroup>
       </Flex>
@@ -104,7 +139,12 @@ export default function Filter() {
           borderRadius="7px"
         ></GridItem>
 
-        <GridFilter arr={cond} onChange={onQualChange} />
+        <GridFilter
+          arr={cond}
+          onChange={onQualChange}
+          query={qualQuery}
+          setquery={setQualQuery}
+        />
         <GridFilter arr={sem} onChange={onSemChange} />
         <GridFilter arr={etc} onChange={onEtcChange} />
 
@@ -185,17 +225,17 @@ const major_4 = [
   "기후 에너지시스템공학과",
 ];
 
-const major_6 = ["디자인학부"];
+const major_5 = ["디자인학부"];
 
-const major_9 = ["융합보건학과"];
+const major_8 = ["융합보건학과"];
 
-const major_13 = ["뇌 인지과학과", "국제학부"];
+const major_12 = ["뇌 인지과학과", "국제학부"];
 
-const cond = ["해당없음", "새내기만", "학번무관", "전공무관"];
+const cond = ["새내기만", "학번무관", "전공무관"];
 
-const sem = ["해당없음", "1학기", "2학기", "3학기", "4학기"];
+const sem = ["1학기", "2학기", "3학기", "4학기", "그 외"];
 
-const etc = ["해당없음", "회비X", "동방O", "면접X", "상시모집"];
+const etc = ["회비X", "동방O", "면접X", "상시모집"];
 
 const list = ["up_1", "up_2", "up_3"];
 
@@ -230,7 +270,8 @@ const up_list = [
   [
     "전체",
     "사진",
-    "밴드/오케스트라",
+    "밴드",
+    "오케스트라",
     "국악/풍물",
     "연극/뮤지컬",
     "패션",
