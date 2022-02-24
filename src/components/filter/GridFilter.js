@@ -1,9 +1,9 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckFilter from "./CheckFilter";
+import CheckFilter from "./FilterButton";
 
 export default function GridFilter({ arr, onChange }) {
   return (
-    <GridItem rowSpan={7} bg="#eaeeea" borderRadius="7px">
+    <GridItem rowSpan={7} bg="lightGreen" borderRadius="7px">
       <SimpleGrid column={1}>
         {arr &&
           arr.map((filter, index) => (
