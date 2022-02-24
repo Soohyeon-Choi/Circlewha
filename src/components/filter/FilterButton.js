@@ -11,8 +11,12 @@ export default function GridFilter({ filter, index, onChange }) {
         onChange(index);
       }}
       padding="1rem"
-      _hover={{ backgroundColor: "#c6cdb5" }}
-      backgroundColor={checked == false ? "#eaeeea" : "#9cb596"}
+      _hover={
+        checked == false
+          ? { backgroundColor: "hoverGreen" }
+          : { backgroundColor: "middleGreen" }
+      }
+      backgroundColor={checked == false ? "lightGreen" : "middleGreen"}
       // color={checked == false ? "#000000" : "#ffffff"}
     >
       {filter}
