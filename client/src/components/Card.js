@@ -51,7 +51,7 @@ export default function Card({ value }) {
         textAlign="center"
       >
             <Text fontWeight="bold" fontSize="4xl" mt="40%">
-              {rowData[0].title}
+              title
             </Text>
       </Box>
       <Box borderRadius="10%" bgColor="#eaeeea">

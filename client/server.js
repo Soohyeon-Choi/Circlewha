@@ -198,10 +198,11 @@ app.prepare().then(() => {
   //return app.render(req, res, '/tagSearch');
   });
 
-  server.get(`/api/get-detail`, (request, response) => {
+  server.get(`/get-detail`, (request, response) => {
     try {
+      console.log('*** get detail ***')
       const req = request.query;
-      connection.query(
+      db.query(
         "SELECT * FROM `desc` where id=?",
         [req.num],
         (err, rows) => {
@@ -216,6 +217,6 @@ app.prepare().then(() => {
   server.get('*', (req, res) => handle(req, res));
 
   server.listen(3060, () => {
-    console.log('next + express running on : http://localhost:3060');
+    console.log('next + express running on port 3060');
   });
 });

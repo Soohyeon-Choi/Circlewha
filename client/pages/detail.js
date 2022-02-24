@@ -5,8 +5,9 @@ export default function Detail() {
   const [id, setId] = useState(82);
   const [detail, setDetail] = useState([]);
   const callApi = async () => {
-    axios.get(`/api/get-detail?num=${id}`).then((res) => {
+    axios.get(`/get-detail?num=${id}`).then((res) => {
       setDetail(res.data);
+      console.log(res.data);
     });
   };
   useEffect(() => {
