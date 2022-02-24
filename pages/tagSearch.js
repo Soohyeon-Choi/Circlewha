@@ -1,5 +1,5 @@
 import TopBar from "../src/components/TopBar";
-import Filter from "../src/components/Filter";
+import Filter from "../src/components/filter/Filter";
 import Card from "../src/components/Card";
 
 import React from "react";

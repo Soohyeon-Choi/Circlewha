@@ -11,7 +11,7 @@ import { BsArrowClockwise } from "react-icons/bs";
 import GridInterest from "./GridInterest";
 import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
-import axios from 'axios';
+import axios from "axios";
 
 export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
@@ -57,10 +57,9 @@ export default function Filter() {
   const iArr = [];
   for (var key in interestQuery) {
     for (var key2 in interestQuery[key]) {
-      if (key2 == 'id') {
+      if (key2 == "id") {
         var v1 = interestQuery[key][key2];
-      }
-      else {
+      } else {
         var v2 = interestQuery[key][key2];
       }
     }
@@ -68,18 +67,22 @@ export default function Filter() {
   }
 
   const onClick = async () => {
-    axios.post('http://localhost:3060/tagSearch', {
-      "test": "test!",
-      "qual": qualQuery,
-      "sem": semQuery,
-      "etc": etcQuery,
-      "interest": iArr
-    },
-      {headers: { "Content-Type": `application/json` }
-    }).then((res) => {
+    axios
+      .post(
+        "http://localhost:3060/tagSearch",
+        {
+          test: "test!",
+          qual: qualQuery,
+          sem: semQuery,
+          etc: etcQuery,
+          interest: iArr,
+        },
+        { headers: { "Content-Type": `application/json` } }
+      )
+      .then((res) => {
         console.log(res);
-      })
-  }
+      });
+  };
 
   return (
     <>
@@ -95,11 +98,7 @@ export default function Filter() {
           <Button color="#006540" variant="ghost">
             전체보기
           </Button>
-          <Button
-            onClick={onClick}
-            color="#006540"
-            variant="ghost"
-          >
+          <Button onClick={onClick} color="#006540" variant="ghost">
             선택완료
           </Button>
         </ButtonGroup>

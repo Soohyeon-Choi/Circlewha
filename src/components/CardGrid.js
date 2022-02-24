@@ -9,7 +9,7 @@ export default function CardGrid() {
       px="10%"
       gap="10"
     >
-        <Card key={} value={value}/>
+      <Card value={value} />
     </Grid>
   );
 }

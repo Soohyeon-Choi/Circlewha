@@ -1,5 +1,5 @@
 import { GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckInterest from "./CheckInterest";
+import CheckInterest from "./InterestButton";
 
 export default function GridInterest({
   arr,

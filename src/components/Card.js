@@ -1,8 +1,17 @@
-import { Box, Text, Flex, Spacer, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Flex,
+  Spacer,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import Detail from "./Detail";
+import useDetail from "../../pages/api/useDetail";
 
 export default function Card({ value }) {
+  var id = 47;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [inputData, setInputData] = useState([{
     id: '',
@@ -48,12 +57,18 @@ export default function Card({ value }) {
         backgroundColor="#fffecf"
         w="100%"
         h="100%"
+        onClick={onOpen}
         textAlign="center"
       >
             <Text fontWeight="bold" fontSize="4xl" mt="40%">
               title
             </Text>
+        <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={id} />
+        <Text fontWeight="bold" fontSize="4xl" mt="40%">
+          {value}
+        </Text>
       </Box>
+
       <Box borderRadius="10%" bgColor="#eaeeea">
         <Text color="#006540">attribute</Text>
       </Box>
