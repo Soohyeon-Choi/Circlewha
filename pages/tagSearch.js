@@ -1,16 +1,17 @@
+import React from "react";
 import TopBar from "../src/components/TopBar";
 import Filter from "../src/components/filter/Filter";
 import Card from "../src/components/Card";
+import { Flex } from "@chakra-ui/react";
 
-import React from "react";
-import axios from "axios";
-
-export default function Home() {
+export default function Result() {
   return (
-    <div>
+    <Flex flexDirection="column">
       <TopBar />
-      <Filter />
+      <Flex justify="center">
+        <Filter />
+      </Flex>
       <Card />
-    </div>
+    </Flex>
   );
 }
