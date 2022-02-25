@@ -13,8 +13,12 @@ export default function GridFilter({ filter, index, addInterest, num }) {
       width="100%"
       padding="1rem"
       key={index}
-      _hover={checked == false ? { bg: "#EEB61A" } : { bg: "#eaeeea" }}
-      backgroundColor={checked == false ? "#eaeeea" : "#EEB61A"}
+      _hover={
+        checked == false
+          ? { backgroundColor: "hoverGreen" }
+          : { backgroundColor: "middleGreen" }
+      }
+      backgroundColor={checked == false ? "lightGreen" : "middleGreen"}
     >
       {filter}
     </Button>
