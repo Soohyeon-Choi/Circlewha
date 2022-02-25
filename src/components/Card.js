@@ -13,31 +13,37 @@ import useDetail from "../../pages/api/useDetail";
 export default function Card({ value }) {
   var id = 47;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [inputData, setInputData] = useState([{
-    id: '',
-    title: '',
-    tag_all: ''
-  }])
+  const [inputData, setInputData] = useState([
+    {
+      id: "",
+      title: "",
+      tag_all: "",
+    },
+  ]);
 
   const [lastIdx, setLastIdx] = useState(0);
 
   useEffect(async () => {
     try {
-      const res = await axios.post('/tagSearch')
-      const _inputData = await res.data.map((rowData) => (
-        setLastIdx(lastIdx + 1),
-        {
-          id: rowData.id,
-          title: rowData.title,
-          tag_all: rowData.tag_all
-        })
-      )
+      const res = await axios.post("/tagSearch");
+      console.log(res);
+      const _inputData = await res.data.map(
+        (rowData) => (
+          setLastIdx(lastIdx + 1),
+          {
+            id: rowData.id,
+            title: rowData.title,
+            tag_all: rowData.tag_all,
+          }
+        )
+      );
       setInputData(inputData.concat(_inputData));
-      console.log('inputData :: ', inputData);
+      console.log(inputData);
+      console.log("inputData :: ", inputData);
     } catch (e) {
-      console.error(e.message)
+      console.error(e.message);
     }
-  }, [])
+  }, []);
 
   return (
     <Flex
@@ -60,9 +66,9 @@ export default function Card({ value }) {
         onClick={onOpen}
         textAlign="center"
       >
-            <Text fontWeight="bold" fontSize="4xl" mt="40%">
-              title
-            </Text>
+        <Text fontWeight="bold" fontSize="4xl" mt="40%">
+          title
+        </Text>
         <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={id} />
         <Text fontWeight="bold" fontSize="4xl" mt="40%">
           {value}
