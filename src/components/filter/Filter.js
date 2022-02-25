@@ -14,6 +14,7 @@ import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
 import Belong from "./Belong";
 import axios from "axios";
+import InitButton from "./InitButton";
 
 export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
@@ -23,10 +24,13 @@ export default function Filter() {
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
   const [collArray, setCollArray] = useState([]);
   const [majorArray, setMajorArray] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const onCategoryChange = (index, filter) => {
     if (cateQuery[0] == filter) {
       cateQuery[0] = -1;
+      cateQuery[1] = -1;
+      cateQuery[2] = -1;
       setCateQuery(cateQuery);
     } else {
       cateQuery[2] = -1;
@@ -44,10 +48,12 @@ export default function Filter() {
       setCollArray([]);
       setMajorArray([]);
     }
+    console.log(cateQuery);
   };
 
   const onCollChange = (index, filter) => {
     if (cateQuery[1] == filter) {
+      cateQuery[2] = -1;
       cateQuery[1] = -1;
       setCateQuery(cateQuery);
       if (cateQuery[0] == "학부/전공 소속") {
@@ -61,6 +67,7 @@ export default function Filter() {
         setMajorArray(major[index]);
       }
     }
+    console.log(cateQuery);
   };
 
   const onMajorChange = (index, filter) => {
@@ -71,6 +78,7 @@ export default function Filter() {
       cateQuery[2] = filter;
       setCateQuery(cateQuery);
     }
+    console.log(cateQuery);
   };
 
   const onQualChange = (index) => {
@@ -93,6 +101,20 @@ export default function Filter() {
       setSemQuery(semQuery);
     }
     //console.log(semQuery);
+  };
+
+  const init = () => {
+    setReload(!reload);
+    cateQuery = [-1, -1, -1];
+    setCateQuery(cateQuery);
+    qualQuery = [-1, -1, -1];
+    setQualQuery(qualQuery);
+    semQuery = [-1, -1, -1, -1];
+    setSemQuery(semQuery);
+    etcQuery = [-1, -1, -1, -1];
+    setEtcQuery(etcQuery);
+    interestQuery = [];
+    setInterestQuery(interestQuery);
   };
 
   const onEtcChange = (index) => {
@@ -140,13 +162,18 @@ export default function Filter() {
     <>
       <Flex justifyContent="end">
         <ButtonGroup spacing={3} size="md">
-          <Button
+          <InitButton init={init} />
+          {/* <Button
             leftIcon={<BsArrowClockwise />}
             color="#006540"
             variant="ghost"
+            onClick={() => {
+              init();
+            }}
           >
             초기화
-          </Button>
+          </Button> */}
+          {console.log(qualQuery)}
           <Button color="#006540" variant="ghost">
             전체보기
           </Button>
@@ -170,22 +197,29 @@ export default function Filter() {
         <FilterName col={1} name="지원조건" />
         <FilterName col={1} name="필수활동학기" />
         <FilterName col={1} name="기타조건" />
-
-        <Belong col={2} arr={category} onChange={onCategoryChange} />
-        <Belong col={2} arr={collArray} onChange={onCollChange} />
-        <Belong col={3} arr={majorArray} onChange={onMajorChange} />
-
-        <GridFilter
-          arr={cond}
-          onChange={onQualChange}
-          query={qualQuery}
-          setquery={setQualQuery}
+        <Belong
+          col={2}
+          arr={category}
+          reload={reload}
+          onChange={onCategoryChange}
         />
-        <GridFilter arr={sem} onChange={onSemChange} />
-        <GridFilter arr={etc} onChange={onEtcChange} />
+        <Belong
+          col={2}
+          arr={collArray}
+          reload={reload}
+          onChange={onCollChange}
+        />
+        <Belong
+          col={3}
+          arr={majorArray}
+          reload={reload}
+          onChange={onMajorChange}
+        />
 
+        <GridFilter arr={cond} onChange={onQualChange} reload={reload} />
+        <GridFilter arr={sem} onChange={onSemChange} reload={reload} />
+        <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
         <FilterName col={10} name="관심분야" />
-
         {up.map((filter, index) => (
           <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
             <Text
@@ -198,9 +232,9 @@ export default function Filter() {
             </Text>
           </GridItem>
         ))}
-
         {up_list.map((list, index) => (
           <GridInterest
+            reload={reload}
             arr={list}
             key={index}
             num={index + 1}

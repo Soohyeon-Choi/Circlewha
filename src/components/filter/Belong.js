@@ -1,10 +1,13 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
 import CheckFilter from "./FilterButton";
 import BelButton from "./BelButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Belong({ arr, onChange, col, num }) {
+export default function Belong({ arr, onChange, col, num, reload }) {
   const [checked, setChecked] = useState(-1);
+  useEffect(() => {
+    setChecked(-1);
+  }, [reload]);
   return (
     <GridItem
       h="20rem"
