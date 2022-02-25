@@ -23,7 +23,6 @@ export default function Filter() {
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
   const [collArray, setCollArray] = useState([]);
   const [majorArray, setMajorArray] = useState([]);
-  //console.log(interestQuery);
 
   const onCategoryChange = (index, filter) => {
     if (cateQuery[0] == filter) {
@@ -35,8 +34,11 @@ export default function Filter() {
       cateQuery[0] = filter;
       setCateQuery(cateQuery);
     }
-    if (cateQuery[0] == "단과대학 소속" || cateQuery[0] == "학부/전공 소속") {
+    if (cateQuery[0] == "단과대학 소속") {
       setCollArray(college);
+      setMajorArray([]);
+    } else if (cateQuery[0] == "학부/전공 소속") {
+      setCollArray(college1);
       setMajorArray([]);
     } else {
       setCollArray([]);
@@ -169,24 +171,9 @@ export default function Filter() {
         <FilterName col={1} name="필수활동학기" />
         <FilterName col={1} name="기타조건" />
 
-        <Belong
-          col={2}
-          arr={category}
-          onChange={onCategoryChange}
-          state={cateQuery}
-        />
-        <Belong
-          col={2}
-          arr={collArray}
-          onChange={onCollChange}
-          state={cateQuery}
-        />
-        <Belong
-          col={3}
-          arr={majorArray}
-          onChange={onMajorChange}
-          state={cateQuery}
-        />
+        <Belong col={2} arr={category} onChange={onCategoryChange} />
+        <Belong col={2} arr={collArray} onChange={onCollChange} />
+        <Belong col={3} arr={majorArray} onChange={onMajorChange} />
 
         <GridFilter
           arr={cond}
@@ -252,6 +239,22 @@ const college = [
   "스크랜튼대학",
   "호크마교양대학",
 ];
+const college1 = [
+  "인문과학대학",
+  "사회과학대학",
+  "자연과학대학",
+  "엘텍공과대학",
+  "음악대학",
+  "조형예술대학",
+  "사범대학",
+  "경영대학",
+  "신산업융합대학",
+  "의과대학",
+  "간호대학",
+  "약학대학",
+  "스크랜튼대학",
+  "호크마교양대학",
+];
 const major = [
   ["국어국문학과", "불어불문학과", "영어영문학과", "사학과", "철학과"],
   ["심리학과", "행정학과", "커뮤니케이션 미디어학부"],
@@ -264,16 +267,16 @@ const major = [
     "화학신소재공학과",
     "기후 에너지시스템공학과",
   ],
-  [""],
+  [],
   ["디자인학부"],
-  [""],
-  [""],
+  [],
+  [],
   ["융합보건학과"],
-  [""],
-  [""],
-  [""],
+  [],
+  [],
+  [],
   ["뇌 인지과학과", "국제학부"],
-  [""],
+  [],
 ];
 
 const major_1 = [
