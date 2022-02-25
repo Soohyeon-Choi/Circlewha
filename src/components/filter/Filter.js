@@ -1,7 +1,7 @@
 import {
   Grid,
   GridItem,
-  SimpleGrid,
+  Box,
   Text,
   Button,
   ButtonGroup,
@@ -160,89 +160,81 @@ export default function Filter() {
 
   return (
     <>
-      <Flex justifyContent="end">
-        <ButtonGroup spacing={3} size="md">
-          <InitButton init={init} />
-          {/* <Button
-            leftIcon={<BsArrowClockwise />}
-            color="#006540"
-            variant="ghost"
-            onClick={() => {
-              init();
-            }}
-          >
-            초기화
-          </Button> */}
-          {console.log(qualQuery)}
-          <Button color="#006540" variant="ghost">
-            전체보기
-          </Button>
-          <Button onClick={onClick} color="#006540" variant="ghost">
-            선택완료
-          </Button>
-        </ButtonGroup>
-      </Flex>
-      <Grid
-        w="100%"
-        h="100%"
-        px="3%"
-        py="2%"
-        templateRows="repeat(17, 1fr)"
-        templateColumns="repeat(10, 1fr)"
-        gap={1}
-      >
-        <FilterName col={2} name="소속" />
-        <FilterName col={2} name="단과대학" />
-        <FilterName col={3} name="학부/전공" />
-        <FilterName col={1} name="지원조건" />
-        <FilterName col={1} name="필수활동학기" />
-        <FilterName col={1} name="기타조건" />
-        <Belong
-          col={2}
-          arr={category}
-          reload={reload}
-          onChange={onCategoryChange}
-        />
-        <Belong
-          col={2}
-          arr={collArray}
-          reload={reload}
-          onChange={onCollChange}
-        />
-        <Belong
-          col={3}
-          arr={majorArray}
-          reload={reload}
-          onChange={onMajorChange}
-        />
-
-        <GridFilter arr={cond} onChange={onQualChange} reload={reload} />
-        <GridFilter arr={sem} onChange={onSemChange} reload={reload} />
-        <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
-        <FilterName col={10} name="관심분야" />
-        {up.map((filter, index) => (
-          <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-            <Text
-              fontweight="bold"
-              color="#006540"
-              textAlign="center"
-              key={index}
-            >
-              {filter}
-            </Text>
-          </GridItem>
-        ))}
-        {up_list.map((list, index) => (
-          <GridInterest
+      <Box maxW="100rem">
+        <Flex justifyContent="end">
+          <ButtonGroup spacing={3} size="md">
+            <InitButton init={init} />
+            {console.log(qualQuery)}
+            <Button color="#006540" variant="ghost">
+              전체보기
+            </Button>
+            <Button onClick={onClick} color="#006540" variant="ghost">
+              선택완료
+            </Button>
+          </ButtonGroup>
+        </Flex>
+        <Grid
+          w="100%"
+          h="100%"
+          px="3%"
+          py="2%"
+          templateRows="repeat(17, 1fr)"
+          templateColumns="repeat(10, 1fr)"
+          gap={1}
+        >
+          <FilterName col={2} name="소속" />
+          <FilterName col={2} name="단과대학" />
+          <FilterName col={3} name="학부/전공" />
+          <FilterName col={1} name="지원조건" />
+          <FilterName col={1} name="필수활동학기" />
+          <FilterName col={1} name="기타조건" />
+          <Belong
+            col={2}
+            arr={category}
             reload={reload}
-            arr={list}
-            key={index}
-            num={index + 1}
-            interestQuery={interestQuery}
-            setInterestQuery={setInterestQuery}
+            onChange={onCategoryChange}
           />
-        ))}
-      </Grid>
+          <Belong
+            col={2}
+            arr={collArray}
+            reload={reload}
+            onChange={onCollChange}
+          />
+          <Belong
+            col={3}
+            arr={majorArray}
+            reload={reload}
+            onChange={onMajorChange}
+          />
+
+          <GridFilter arr={cond} onChange={onQualChange} reload={reload} />
+          <GridFilter arr={sem} onChange={onSemChange} reload={reload} />
+          <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
+          <FilterName col={10} name="관심분야" />
+          {up.map((filter, index) => (
+            <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+              <Text
+                fontweight="bold"
+                color="#006540"
+                textAlign="center"
+                key={index}
+              >
+                {filter}
+              </Text>
+            </GridItem>
+          ))}
+          {up_list.map((list, index) => (
+            <GridInterest
+              reload={reload}
+              arr={list}
+              key={index}
+              num={index + 1}
+              interestQuery={interestQuery}
+              setInterestQuery={setInterestQuery}
+            />
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }
