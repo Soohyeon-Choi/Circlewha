@@ -1,6 +1,7 @@
 import {
   Grid,
   GridItem,
+  SimpleGrid,
   Text,
   Button,
   ButtonGroup,
@@ -11,15 +12,64 @@ import { BsArrowClockwise } from "react-icons/bs";
 import GridInterest from "./GridInterest";
 import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
+import Belong from "./Belong";
 import axios from "axios";
 
 export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
+  const [cateQuery, setCateQuery] = useState([-1, -1, -1]);
   const [qualQuery, setQualQuery] = useState([-1, -1, -1]);
   const [semQuery, setSemQuery] = useState([-1, -1, -1, -1]);
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
-
+  const [collArray, setCollArray] = useState([]);
+  const [majorArray, setMajorArray] = useState([]);
   //console.log(interestQuery);
+
+  const onCategoryChange = (index, filter) => {
+    if (cateQuery[0] == filter) {
+      cateQuery[0] = -1;
+      setCateQuery(cateQuery);
+    } else {
+      cateQuery[2] = -1;
+      cateQuery[1] = -1;
+      cateQuery[0] = filter;
+      setCateQuery(cateQuery);
+    }
+    if (cateQuery[0] == "단과대학 소속" || cateQuery[0] == "학부/전공 소속") {
+      setCollArray(college);
+      setMajorArray([]);
+    } else {
+      setCollArray([]);
+      setMajorArray([]);
+    }
+  };
+
+  const onCollChange = (index, filter) => {
+    if (cateQuery[1] == filter) {
+      cateQuery[1] = -1;
+      setCateQuery(cateQuery);
+      if (cateQuery[0] == "학부/전공 소속") {
+        setMajorArray([]);
+      }
+    } else {
+      cateQuery[2] = -1;
+      cateQuery[1] = filter;
+      setCateQuery(cateQuery);
+      if (cateQuery[0] == "학부/전공 소속") {
+        setMajorArray(major[index]);
+      }
+    }
+  };
+
+  const onMajorChange = (index, filter) => {
+    if (cateQuery[2] == filter) {
+      cateQuery[2] = -1;
+      setCateQuery(cateQuery);
+    } else {
+      cateQuery[2] = filter;
+      setCateQuery(cateQuery);
+    }
+  };
 
   const onQualChange = (index) => {
     if (qualQuery[index] == -1) {
@@ -119,24 +169,24 @@ export default function Filter() {
         <FilterName col={1} name="필수활동학기" />
         <FilterName col={1} name="기타조건" />
 
-        <GridItem
-          colSpan={2}
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-        ></GridItem>
-        <GridItem
-          colSpan={2}
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-        ></GridItem>
-        <GridItem
-          colSpan={3}
-          rowSpan={7}
-          bg="#eaeeea"
-          borderRadius="7px"
-        ></GridItem>
+        <Belong
+          col={2}
+          arr={category}
+          onChange={onCategoryChange}
+          state={cateQuery}
+        />
+        <Belong
+          col={2}
+          arr={collArray}
+          onChange={onCollChange}
+          state={cateQuery}
+        />
+        <Belong
+          col={3}
+          arr={majorArray}
+          onChange={onMajorChange}
+          state={cateQuery}
+        />
 
         <GridFilter
           arr={cond}
@@ -201,6 +251,29 @@ const college = [
   "약학대학",
   "스크랜튼대학",
   "호크마교양대학",
+];
+const major = [
+  ["국어국문학과", "불어불문학과", "영어영문학과", "사학과", "철학과"],
+  ["심리학과", "행정학과", "커뮤니케이션 미디어학부"],
+  ["화학 나노과학전공", "생명과학전공"],
+  [
+    "컴퓨터공학과",
+    "사이버보안전공",
+    "전자전기공학과",
+    "식품공학과",
+    "화학신소재공학과",
+    "기후 에너지시스템공학과",
+  ],
+  [""],
+  ["디자인학부"],
+  [""],
+  [""],
+  ["융합보건학과"],
+  [""],
+  [""],
+  [""],
+  ["뇌 인지과학과", "국제학부"],
+  [""],
 ];
 
 const major_1 = [

@@ -1,20 +1,27 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
 import CheckFilter from "./FilterButton";
+import BelButton from "./BelButton";
 
-export default function GridFilter({ arr, onChange }) {
+export default function Belong({ arr, onChange, col, state }) {
   return (
     <GridItem
       h="20rem"
       overflowX="hidden"
       overflowY="auto"
-      rowSpan={5}
+      colSpan={col}
+      rowSpan={7}
       bg="lightGreen"
       borderRadius="7px"
     >
       <SimpleGrid column={1}>
         {arr &&
           arr.map((filter, index) => (
-            <CheckFilter filter={filter} index={index} onChange={onChange} />
+            <BelButton
+              onChange={onChange}
+              filter={filter}
+              index={index}
+              state={state}
+            />
           ))}
       </SimpleGrid>
     </GridItem>
