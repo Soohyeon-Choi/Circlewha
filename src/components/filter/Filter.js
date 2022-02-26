@@ -25,6 +25,7 @@ export default function Filter() {
   const [collArray, setCollArray] = useState([]);
   const [majorArray, setMajorArray] = useState([]);
   const [reload, setReload] = useState(false);
+  const [inputData, setInputData] = useState([]);
 
   const onCategoryChange = (index, filter) => {
     if (cateQuery[0] == filter) {
