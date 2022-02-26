@@ -19,11 +19,11 @@ export default function SearchBar(AddKeyword){
             {params:{
                 title:`${title}`
             }})
-            .catch((err)=>{
-                console.log(err);
-
-            })
-        }
+            .then((res)=>{
+                console.log(res.data);
+            });
+        
+        };
 
 
       /*  const handleEnter = (e) => {
@@ -41,14 +41,11 @@ export default function SearchBar(AddKeyword){
         }*/
 
 
-
-
     return(
         <InputGroup >
     
         <Input variant='flushed'
         value={title}
-        active={hasTitle}
         onChange={handleChange} 
          
         htmlSize={20} width='auto' placeholder='동아리 이름' color='#000000' focusBorderColor='#3b5735' />
@@ -61,8 +58,6 @@ export default function SearchBar(AddKeyword){
   
   
       </InputGroup>
-
-
 
     );
 
