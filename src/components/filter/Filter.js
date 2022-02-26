@@ -20,7 +20,7 @@ export default function Filter() {
   const [interestQuery, setInterestQuery] = useState([]);
   const [cateQuery, setCateQuery] = useState([-1, -1, -1]);
   const [qualQuery, setQualQuery] = useState([-1, -1, -1]);
-  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1]);
+  const [semQuery, setSemQuery] = useState([-1, -1, -1, -1, -1]);
   const [etcQuery, setEtcQuery] = useState([-1, -1, -1, -1]);
   const [collArray, setCollArray] = useState([]);
   const [majorArray, setMajorArray] = useState([]);
@@ -110,7 +110,7 @@ export default function Filter() {
     setCateQuery(cateQuery);
     qualQuery = [-1, -1, -1];
     setQualQuery(qualQuery);
-    semQuery = [-1, -1, -1, -1];
+    semQuery = [-1, -1, -1, -1, -1];
     setSemQuery(semQuery);
     etcQuery = [-1, -1, -1, -1];
     setEtcQuery(etcQuery);
@@ -146,6 +146,7 @@ export default function Filter() {
       .post(
         "http://localhost:3060/tagSearch",
         {
+          belong: cateQuery,
           qual: qualQuery,
           sem: semQuery,
           etc: etcQuery,
@@ -155,10 +156,12 @@ export default function Filter() {
       )
       .then((res) => {
         console.log(res);
+        setInputData(res.data);
       });
   };
 
   const listAll = async () => {
+    setReload(!reload);
     axios
       .post(
         "http://localhost:3060/tagSearch",
@@ -185,7 +188,6 @@ export default function Filter() {
         <Flex justifyContent="end">
           <ButtonGroup spacing={3} size="md">
             <InitButton init={init} />
-            {console.log(qualQuery)}
             <Button onClick={listAll} color="#006540" variant="ghost">
               전체보기
             </Button>
@@ -307,6 +309,7 @@ const major = [
   ["심리학과", "행정학과", "커뮤니케이션 미디어학부"],
   ["화학 나노과학전공", "생명과학전공"],
   [
+    "전체",
     "컴퓨터공학과",
     "사이버보안전공",
     "전자전기공학과",

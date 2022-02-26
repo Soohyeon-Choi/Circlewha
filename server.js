@@ -15,12 +15,64 @@ var db = mysql.createConnection({
 });
 db.connect();
 
-var bname = [
-  ["belong_category", "belong_colleage", "belong_major"],
+const bname = [
+  ["belong_category", "belong_college", "belong_major"],
   ["qual_new", "qual_allgrade", "qual_allmajor"],
   ["else", "1", "2", "3", "4"],
   ["etc_feeX", "etc_room", "etc_interviewX", "etc_allday"],
   ["interest_u", "tag_frac"],
+];
+
+const category = [
+  "전체",
+  "중앙동아리",
+  "단과대학 소속",
+  "학부/전공 소속",
+  "기타 소속",
+  "무소속",
+  "연합동아리",
+];
+
+const college = [
+  "인문과학대학",
+  "사회과학대학",
+  "자연과학대학",
+  "엘텍공과대학",
+  "음악대학",
+  "조형예술대학",
+  "사범대학",
+  "경영대학",
+  "신산업융합대학",
+  "의과대학",
+  "간호대학",
+  "약학대학",
+  "스크랜튼대학",
+  "호크마교양대학",
+];
+
+const major = [
+  ["전체", "국어국문학과", "불어불문학과", "영어영문학과", "사학과", "철학과"],
+  ["전체", "심리학과", "행정학과", "커뮤니케이션 미디어학부"],
+  ["전체", "화학 나노과학전공", "생명과학전공"],
+  [
+    "전체",
+    "컴퓨터공학과",
+    "사이버보안전공",
+    "전자전기공학과",
+    "식품공학과",
+    "화학신소재공학과",
+    "기후 에너지시스템공학과",
+  ],
+  [],
+  ["디자인학부"],
+  [],
+  [],
+  ["융합보건학과"],
+  [],
+  [],
+  [],
+  ["전체", "뇌 인지과학과", "국제학부"],
+  [],
 ];
 
 function makesql(bval) {
@@ -32,31 +84,80 @@ function makesql(bval) {
   var sql_interest = "(";
 
   for (let i = 0; i < 1; i++) {
-    if (bval[0] == -1) {
+    var majorcode;
+
+    if (bval[0][0] == "전체") {
+      sql_belong += bname[0][0] + ")";
       break;
-    }
-    for (let j = 0; j < bval[0].length; j++) {
-      sql_belong += "(";
-      for (let k = 0; k < 3; k++) {
-        if (bval[0][j][k] == 1886) {
-          if (k == 0) {
-            sql_belong += bname[0][k];
-          } else {
-            sql_belong += " AND " + bname[0][k];
+    } else if (
+      bval[0][0] == "단과대학 소속" ||
+      bval[0][0] == "학부/전공 소속"
+    ) {
+      for (let j = 0; j < category.length; j++) {
+        if (bval[0][0] == category[j]) {
+          sql_belong += "(" + bname[0][0] + "=" + j + ")";
+        }
+      }
+
+      if (bval[0][1] != -1) {
+        for (let j = 0; j < college.length; j++) {
+          if (bval[0][1] == college[j]) {
+            sql_belong += "AND" + "(" + bname[0][1] + "=" + (j + 1) + ")";
+            majorcode = j;
           }
-        } else {
-          if (k == 0) {
-            sql_belong += bname[0][k] + "=" + bval[0][j][k];
-          } else {
-            sql_belong += " AND " + bname[0][k] + "=" + bval[0][j][k];
+        }
+      } else if (bval[0][1] == -1) {
+        sql_belong += "AND" + "(" + bname[0][1] + ")";
+      }
+
+      if (bval[0][0] != "단과대학 소속") {
+        if (bval[0][2] != -1) {
+          for (let j = 0; j < major[majorcode].length; j++) {
+            if (bval[0][2] == major[majorcode][j]) {
+              sql_belong +=
+                "AND" +
+                "(" +
+                bname[0][2] +
+                "=" +
+                ((majorcode + 1) * 10 + j - 1) +
+                ")";
+            }
+          }
+        } else if (bval[0][2] == -1) {
+          sql_belong += "AND (" + bname[0][2] + ")";
+        }
+      }
+    } else {
+      for (let j = 0; j < category.length; j++) {
+        if (bval[0][0] == category[j]) {
+          sql_belong += "(" + bname[0][0] + "=" + j + ")";
+        }
+      }
+
+      if (bval[0][1] != -1) {
+        for (let j = 0; j < college.length; j++) {
+          if (bval[0][1] == college[j]) {
+            sql_belong += "AND" + "(" + bname[0][1] + "=" + (j + 1) + ")";
+            majorcode = j;
           }
         }
       }
-      if (j != bval[0].length - 1) {
-        sql_belong += ") OR ";
+      if (bval[0][2] != -1) {
+        for (let j = 0; j < major[majorcode].length; j++) {
+          if (bval[0][2] == major[majorcode][j]) {
+            sql_belong +=
+              "AND" +
+              "(" +
+              bname[0][2] +
+              "=" +
+              ((majorcode + 1) * 10 + j - 1) +
+              ")";
+          }
+        }
       }
     }
-    sql_belong += "))";
+
+    sql_belong += ")";
   }
   //console.log('sql_belong: ' + sql_belong);
 
@@ -74,10 +175,13 @@ function makesql(bval) {
   }
 
   for (let i = 2; i < 3; i++) {
-    for (let j = 0; j < bval[2].length; j++) {
+    for (let j = 0; j < bval[2].length - 1; j++) {
       if (bval[2][j] == 1) {
-        sql_period += " OR period =" + j;
+        sql_period += " OR period =" + (j + 1);
       }
+    }
+    if (bval[2][4] == 1) {
+      sql_period += " OR period = 0";
     }
     sql_period += ")";
     if (sql_period.startsWith("( OR ")) {
@@ -182,12 +286,13 @@ app.prepare().then(() => {
     console.log("*** post tag ***");
     var query;
     var Bval = [
-      -1,
+      req.body.belong,
       req.body.qual,
       req.body.sem,
       req.body.etc,
       req.body.interest,
     ];
+
     if (req.body.qual[0] != 100) {
       query = makesql(Bval);
     } else {
