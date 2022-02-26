@@ -71,7 +71,6 @@ export default function Filter() {
       .post(
         "http://localhost:3060/tagSearch",
         {
-          test: "test!",
           qual: qualQuery,
           sem: semQuery,
           etc: etcQuery,
