@@ -5,7 +5,7 @@ import { useState,setState } from "react";
 import axios from "axios";
 import React from "react";
 
-export default function SearchBar(results){
+export default function SearchBar(AddKeyword){
     const router = useRouter();
   const[title,setTitle]=useState('');
   
@@ -13,17 +13,33 @@ export default function SearchBar(results){
     const handleChange = ({target:{value}}) => setTitle(value); 
 
 
-    async function title_search(){
-        
-            axios.get(
-                `title?title=${title}`
-            )
+    const title_search =async() =>{
+ 
+            axios.get('/title',
+            {params:{
+                title:`${title}`
+            }})
             .catch((err)=>{
                 console.log(err);
 
             })
+        }
 
-    }
+
+      /*  const handleEnter = (e) => {
+          if (title && e.keyCode === 13) {
+            AddKeyword(title);
+            setTitle('');
+           
+          }
+        }
+      
+        const hasTitle = !!title;
+      
+        {
+          console.log(!!title);
+        }*/
+
 
 
 
@@ -32,7 +48,9 @@ export default function SearchBar(results){
     
         <Input variant='flushed'
         value={title}
-        onChange={handleChange}   
+        active={hasTitle}
+        onChange={handleChange} 
+         
         htmlSize={20} width='auto' placeholder='동아리 이름' color='#000000' focusBorderColor='#3b5735' />
     
     <Button rightIcon={<SearchIcon />}
@@ -40,6 +58,7 @@ export default function SearchBar(results){
     color='#3b5735' borderColor='#3b5735' variant='outline'>
     검색
   </Button>
+  
   
       </InputGroup>
 
