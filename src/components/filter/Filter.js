@@ -157,6 +157,27 @@ export default function Filter() {
       });
   };
 
+  const listAll = async () => {
+    axios
+      .post(
+        "http://localhost:3060/tagSearch",
+        {
+          qual: [100, 100, 100],
+          sem: semQuery,
+          etc: etcQuery,
+          interest: iArr,
+        },
+        {
+          headers: { "Content-Type": `application/json` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        setInputData(res.data);
+      });
+    console.log("inputData :: ", inputData);
+  };
+
   return (
     <>
       <Box maxW="100rem">
@@ -164,7 +185,7 @@ export default function Filter() {
           <ButtonGroup spacing={3} size="md">
             <InitButton init={init} />
             {console.log(qualQuery)}
-            <Button color="#006540" variant="ghost">
+            <Button onClick={listAll} color="#006540" variant="ghost">
               전체보기
             </Button>
             <Button onClick={onClick} color="#006540" variant="ghost">
