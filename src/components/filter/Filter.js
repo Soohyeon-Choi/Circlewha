@@ -162,6 +162,7 @@ export default function Filter() {
 
   const listAll = async () => {
     setReload(!reload);
+    init();
     axios
       .post(
         "http://localhost:3060/tagSearch",
@@ -179,8 +180,9 @@ export default function Filter() {
         console.log(res);
         setInputData(res.data);
       });
-    console.log("inputData :: ", inputData);
   };
+
+  console.log("check inputData :: ", inputData);
 
   return (
     <>
