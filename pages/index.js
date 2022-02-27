@@ -1,9 +1,10 @@
-import Result from "../src/components/Result";
-
+import MainBackground from "../src/components/MainBackground";
+import TopBar from "../src/components/TopBar";
 export default function Home() {
   return (
     <div>
-      <Result />
+      <TopBar />
+      <MainBackground />
     </div>
   );
 }
