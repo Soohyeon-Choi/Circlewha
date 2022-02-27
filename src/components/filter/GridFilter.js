@@ -4,7 +4,7 @@ import FilterButton from "./FilterButton";
 export default function GridFilter({ arr, onChange, reload }) {
   return (
     <GridItem
-      h="20rem"
+      h="13rem"
       overflowX="hidden"
       overflowY="auto"
       rowSpan={5}

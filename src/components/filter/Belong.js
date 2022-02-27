@@ -10,7 +10,7 @@ export default function Belong({ arr, onChange, col, num, reload }) {
   }, [reload]);
   return (
     <GridItem
-      h="20rem"
+      h="13rem"
       overflowX="hidden"
       overflowY="auto"
       colSpan={col}
