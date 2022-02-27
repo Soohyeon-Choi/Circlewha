@@ -189,6 +189,7 @@ export default function Filter() {
 
   return (
     <>
+    <div class="filter">
       <Flex flexDirection="column">
         <Box maxW="100rem">
           <Flex justifyContent="end">
@@ -266,6 +267,7 @@ export default function Filter() {
         </Box>
         <CardGrid inputData={inputData} />
       </Flex>
+    </div>
     </>
   );
 }

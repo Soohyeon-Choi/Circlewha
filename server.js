@@ -286,6 +286,7 @@ app.prepare().then(() => {
     return app.render(req, res, "/tagSearch");
   });
 
+
   server.post("/tagSearch", (req, res) => {
     console.log("*** post tag ***");
     var query;

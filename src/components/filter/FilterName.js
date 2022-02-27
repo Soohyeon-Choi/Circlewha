@@ -3,6 +3,7 @@ import { GridItem, Grid, Text, Box, Flex, SimpleGrid } from "@chakra-ui/react";
 export default function FilterName({ name, col }) {
   return (
     <GridItem
+      margin='0'
       color="white"
       align="center"
       colSpan={col}

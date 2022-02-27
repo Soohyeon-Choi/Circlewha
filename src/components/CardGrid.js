@@ -10,7 +10,7 @@ export default function CardGrid({ inputData }) {
       px="10%"
       gap="20"
     >
-      {inputData.map((value, index) => (
+      {inputData&&inputData.map((value, index) => (
         <Card key={index} value={value} />
       ))}
     </Grid>
