@@ -242,7 +242,7 @@ export default function Filter() {
             <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
             <FilterName col={10} name="관심분야" />
             {up.map((filter, index) => (
-              <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
+              <GridItem key={index} colSpan={1} bg="#eaeeea" borderRadius="7px">
                 <Text
                   fontweight="bold"
                   color="#006540"

@@ -15,6 +15,7 @@ export default function GridFilter({ arr, onChange, reload }) {
         {arr &&
           arr.map((filter, index) => (
             <FilterButton
+              key={index}
               filter={filter}
               index={index}
               onChange={onChange}
