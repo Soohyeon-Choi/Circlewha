@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require('express');
 const expressSession = require('express-session');
 const next = require('next');
@@ -12,17 +11,6 @@ const mysql = require('mysql');
 var url = require('url');
 const { response } = require('express');
 const sanitizeHtml = require('sanitize-html');
-=======
-const express = require("express");
-const expressSession = require("express-session");
-const next = require("next");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv");
-
-const mysql = require("mysql");
->>>>>>> 1ce8de50fe60f0fab8d61690126a608861b87ac5
 var db = mysql.createConnection({
   host: "127.0.0.1",
   user: "circlewha",
