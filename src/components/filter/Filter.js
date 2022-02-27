@@ -208,7 +208,6 @@ export default function Filter() {
             h="100%"
             px="3%"
             py="2%"
-            templateRows="repeat(17, 1fr)"
             templateColumns="repeat(10, 1fr)"
             gap={1}
           >

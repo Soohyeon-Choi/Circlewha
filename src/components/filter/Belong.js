@@ -14,7 +14,6 @@ export default function Belong({ arr, onChange, col, num, reload }) {
       overflowX="hidden"
       overflowY="auto"
       colSpan={col}
-      rowSpan={7}
       bg="lightGreen"
       borderRadius="7px"
     >
