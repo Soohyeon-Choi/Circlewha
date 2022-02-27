@@ -51,9 +51,9 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
     return cond;
   };
 
-  if (isLoading) {
-    return <div>로딩중</div>;
-  }
+  // if (isLoading) {
+  //   return <div>로딩중</div>;
+  // }
 
   return detail.data ? (
     <>

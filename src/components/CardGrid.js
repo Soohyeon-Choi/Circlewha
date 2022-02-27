@@ -9,7 +9,9 @@ export default function CardGrid() {
       px="10%"
       gap="10"
     >
-      <Card value={value} />
+      {inputData.map((value, index) => (
+        <Card value={value} />
+      ))}
     </Grid>
   );
 }
