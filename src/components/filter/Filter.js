@@ -117,6 +117,8 @@ export default function Filter() {
     setEtcQuery(etcQuery);
     interestQuery = [];
     setInterestQuery(interestQuery);
+
+    setInputData();
   };
 
   const onEtcChange = (index) => {
