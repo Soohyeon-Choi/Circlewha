@@ -119,7 +119,15 @@ export default function Filter() {
         <FilterName col={1} name="필수활동학기" />
         <FilterName col={1} name="기타조건" />
 
-        <GridItem colSpan={2} rowSpan={7} bg="#eaeeea" borderRadius="7px">
+        <GridItem
+          colSpan={2}
+          rowSpan={7}
+          bg="#eaeeea"
+          borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="auto"
+        >
           {category.map((filter, index) => (
             <Button width="100%" key={index} bg="#eaeeea">
               {filter}
@@ -132,6 +140,9 @@ export default function Filter() {
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="auto"
         ></GridItem>
 
         <GridItem
@@ -139,6 +150,9 @@ export default function Filter() {
           rowSpan={7}
           bg="#eaeeea"
           borderRadius="7px"
+          h="13rem"
+          overflowX="hidden"
+          overflowY="auto"
         ></GridItem>
 
         <GridFilter
