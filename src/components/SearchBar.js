@@ -5,7 +5,7 @@ import { useState, setState } from "react";
 import axios from "axios";
 import React from "react";
 
-export default function SearchBar({ title_search, handleChange }) {
+export default function SearchBar({ title_search, handleChange, title }) {
   const pressEnter = (event) => {
     const { key } = event;
     if (key == "Enter") {
@@ -25,15 +25,16 @@ export default function SearchBar({ title_search, handleChange }) {
         onChange={(event) => handleChange(event)}
         onKeyPress={(event) => pressEnter(event)}
         htmlSize={20}
-        width="auto"
+        width="30rem"
         placeholder="동아리 이름 검색"
-        color="#000000"
-        focusBorderColor="#3b5735"
+        value={title}
+        color="black"
+        focusBorderColor="darkGreen"
       />
       <IconButton
         icon={<SearchIcon />}
         onClick={clickButton}
-        color="#3b5735"
+        color="darkGreen"
         background="none"
       />
     </InputGroup>
