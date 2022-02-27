@@ -1,7 +1,10 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
-export default function GridFilter({ filter, index, onChange }) {
+import { useEffect, useState } from "react";
+export default function FilterButton({ filter, reload, index, onChange }) {
   const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setChecked(false);
+  }, [reload]);
   return (
     <Button
       width="100%"

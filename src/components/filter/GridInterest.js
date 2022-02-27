@@ -1,11 +1,12 @@
 import { GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckInterest from "./InterestButton";
+import InterestButton from "./InterestButton";
 
 export default function GridInterest({
   arr,
   num,
   interestQuery,
   setInterestQuery,
+  reload,
 }) {
   const addInterest = (filter, num) => {
     if (interestQuery) {
@@ -39,9 +40,10 @@ export default function GridInterest({
       <SimpleGrid column={1}>
         {arr &&
           arr.map((filter, index) => (
-            <CheckInterest
+            <InterestButton
               filter={filter}
               index={index}
+              reload={reload}
               num={num}
               addInterest={addInterest}
             />

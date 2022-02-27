@@ -5,6 +5,8 @@ import {
   Spacer,
   Button,
   useDisclosure,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import Detail from "./Detail";
@@ -43,10 +45,8 @@ export default function Card({ value }) {
   //   }
   // }, []);
 
-  const [inputData, setInputData] = useState([]);
-
   const attribute = () => {
-    var attri = inputData.tag_all;
+    var attri = value.tag_all;
     var attriArray = attri.split(",");
     for (var i = 0; i < attriArray.length; i++) {
       attriArray[i] = "#" + attriArray[i];
@@ -55,46 +55,45 @@ export default function Card({ value }) {
   };
 
   return (
-    <Flex
+    <Box
       as="button"
       variant="ghost"
       _focus="none"
       _hover="none"
       display="flex"
       flexDirection="column"
-      w="20rem"
-      h="20rem"
+      w="100%"
+      h="100%"
     >
+      {/* <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={id} /> */}
       <Box
         borderRadius="50%"
         borderWidth="0.3rem"
-        borderColor="#006540"
-        w="100%"
-        h="100%"
+        borderColor="darkgreen"
+        w="15rem"
+        h="15rem"
         onClick={onOpen}
         textAlign="center"
       >
-        <Text fontWeight="bold" fontSize="4xl" mt="40%">
-          title
-        </Text>
-        <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={id} />
-        <Text fontWeight="bold" fontSize="4xl" mt="40%">
-          {value}
+        <Text fontWeight="bold" fontSize="2xl" padding="30">
+          {value && value.title}
         </Text>
       </Box>
-
-      {attribute().map((value, index) => (
-        <Flex
-          ml={2}
-          bgColor="middleGreen"
+      {/* <Grid templateColumns={`repeat(2,1fr)`}> */}
+      {attribute().map((tag, index) => (
+        <Box
+          mr={2}
+          mb={2}
+          bgColor="hoverGreen"
           alignItems="center"
           borderRadius="10%"
         >
           <Text color="#006540" key={index}>
-            {value}
+            {tag}
           </Text>
-        </Flex>
+        </Box>
       ))}
-    </Flex>
+      {/* </Grid> */}
+    </Box>
   );
 }
