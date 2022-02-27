@@ -8,7 +8,6 @@ export default function MainBackground({ position }) {
   return ( 
    
   
-     
     <Image src={backgroundImage.src} />
 
 

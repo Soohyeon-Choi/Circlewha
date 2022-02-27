@@ -27,6 +27,7 @@ export default function Filter() {
   const [majorArray, setMajorArray] = useState([]);
   const [reload, setReload] = useState(false);
   const [inputData, setInputData] = useState([]);
+  const iArr = [];
 
   const onCategoryChange = (index, filter) => {
     if (cateQuery[0] == filter) {
@@ -117,6 +118,8 @@ export default function Filter() {
     setEtcQuery(etcQuery);
     interestQuery = [];
     setInterestQuery(interestQuery);
+
+    setInputData();
   };
 
   const onEtcChange = (index) => {
@@ -130,7 +133,6 @@ export default function Filter() {
     //console.log(etcQuery);
   };
 
-  const iArr = [];
   for (var key in interestQuery) {
     for (var key2 in interestQuery[key]) {
       if (key2 == "id") {
@@ -140,6 +142,7 @@ export default function Filter() {
       }
     }
     iArr.push([v1, v2]);
+    console.log("v1, v2: " + v1 + ", " + v2);
   }
 
   const onClick = async () => {
