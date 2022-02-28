@@ -1,16 +1,16 @@
-const express = require('express');
-const expressSession = require('express-session');
-const next = require('next');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
-const sanitize = require('sanitize-html');
-const mysql = require('mysql');
+const express = require("express");
+const expressSession = require("express-session");
+const next = require("next");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
+const sanitize = require("sanitize-html");
+const mysql = require("mysql");
 
-var url = require('url');
-const { response } = require('express');
-const sanitizeHtml = require('sanitize-html');
+var url = require("url");
+const { response } = require("express");
+const sanitizeHtml = require("sanitize-html");
 var db = mysql.createConnection({
   host: "127.0.0.1",
   user: "circlewha",
@@ -315,30 +315,24 @@ app.prepare().then(() => {
     //return app.render(req, res, '/tagSearch');
   });
 
-  
+  server.get("/title", (request, response) => {
+    try {
+      console.log("*** get titleSearch ***");
+      var queryData = url.parse(request.url, true).query;
 
+      var title = sanitizeHtml(queryData.title);
 
-
-  server.get('/title', (request, response) => {
-
-   try {
-      console.log('*** get titleSearch ***')
-      var queryData =url.parse(request.url, true).query;
-    
-      var title=sanitizeHtml(queryData.title);
-      
-      var sql=`SELECT id,title,tag_all FROM circle_all WHERE title LIKE '%${title}%' `;
-      db.query(sql,(err, rows)=>{
-        if (err) 
-        {throw err};
-        response.json({data:rows});
+      var sql = `SELECT id,title,tag_all FROM circle_all WHERE title LIKE '%${title}%' `;
+      db.query(sql, (err, rows) => {
+        if (err) {
+          throw err;
+        }
+        response.json({ data: rows });
       });
     } catch (error) {
       console.log(error);
     }
-    
   });
-
 
   server.get(`/get-detail`, (request, response) => {
     try {

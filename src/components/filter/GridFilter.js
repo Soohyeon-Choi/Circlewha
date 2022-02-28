@@ -7,7 +7,6 @@ export default function GridFilter({ arr, onChange, reload }) {
       h="13rem"
       overflowX="hidden"
       overflowY="auto"
-      rowSpan={5}
       bg="lightGreen"
       borderRadius="7px"
     >

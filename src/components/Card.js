@@ -65,7 +65,7 @@ export default function Card({ value }) {
       w="100%"
       h="100%"
     >
-      {/* <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={id} /> */}
+      <Detail onOpen={onOpen} onClose={onClose} isOpen={isOpen} id={value.id} />
       <Box
         borderRadius="50%"
         borderWidth="0.3rem"
@@ -79,20 +79,36 @@ export default function Card({ value }) {
           {value && value.title}
         </Text>
       </Box>
-      {/* <Grid templateColumns={`repeat(2,1fr)`}> */}
-      {attribute().map((tag, index) => (
-        <Box
-          mr={2}
-          mb={2}
-          bgColor="hoverGreen"
-          alignItems="center"
-          borderRadius="10%"
-        >
-          <Text color="#006540" key={index}>
-            {tag}
-          </Text>
-        </Box>
-      ))}
+      <Box w="20rem">
+        <Flex>
+          {/* <Flex>
+                    {getField().map((value, index) => (
+                      <Flex
+                        mr={2}
+                        mb={2}
+                        bgColor="middleGreen"
+                        alignItems="center"
+                      >
+                        <Text key={index}>{value}</Text>
+                      </Flex>
+                    ))}
+                  </Flex> */}
+          {/* <Grid templateColumns={`repeat(2,1fr)`}> */}
+          {attribute().map((tag, index) => (
+            <Flex
+              mr={2}
+              mb={2}
+              bgColor="hoverGreen"
+              alignItems="center"
+              borderRadius="10%"
+            >
+              <Text color="#006540" key={index}>
+                {tag}
+              </Text>
+            </Flex>
+          ))}
+        </Flex>
+      </Box>
       {/* </Grid> */}
     </Box>
   );
