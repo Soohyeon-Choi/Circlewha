@@ -21,6 +21,7 @@ export default function Belong({ arr, onChange, col, num, reload }) {
         {arr &&
           arr.map((filter, index) => (
             <BelButton
+              key={index}
               onChange={onChange}
               checked={checked}
               num={num}

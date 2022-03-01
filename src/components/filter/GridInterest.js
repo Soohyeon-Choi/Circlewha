@@ -41,6 +41,7 @@ export default function GridInterest({
         {arr &&
           arr.map((filter, index) => (
             <InterestButton
+              key={index}
               filter={filter}
               index={index}
               reload={reload}
