@@ -12,7 +12,7 @@ var url = require("url");
 const { response } = require("express");
 const sanitizeHtml = require("sanitize-html");
 var db = mysql.createConnection({
-  host: "15.165.130.197",
+  host: "localhost",
   user: "circlewha",
   password: "circlewha123",
   database: "circle",

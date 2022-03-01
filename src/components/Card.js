@@ -34,12 +34,11 @@ export default function Card({ value }) {
           alignItems="center"
           borderRadius="50%"
           borderWidth="0.3rem"
-          borderColor="darkGreen"
+          borderColor="middleGreen"
           w="15rem"
           h="15rem"
           onClick={onOpen}
           textAlign="center"
-          bgColor=""
           mb={3}
         >
           <Text fontWeight="bold" fontSize="2xl">
@@ -53,7 +52,7 @@ export default function Card({ value }) {
               p={1}
               mr={2}
               mb={2}
-              bgColor="hoverGreen"
+              bgColor="lightGreen"
               alignItems="center"
               key={index}
               borderRadius={5}
