@@ -1,6 +1,7 @@
 import {
   Grid,
   GridItem,
+  Spinner,
   Box,
   Text,
   Button,
@@ -27,6 +28,8 @@ export default function Filter() {
   const [reload, setReload] = useState(false);
   const [inputData, setInputData] = useState([]);
   const [first, setFirst] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const iArr = [];
 
   const onCategoryChange = (index, filter) => {
@@ -161,23 +164,30 @@ export default function Filter() {
   const listAll = async () => {
     setReload(!reload);
     init();
-    axios
-      .post(
-        "/tagSearch",
-        {
-          qual: [100, 100, 100],
-          sem: semQuery,
-          etc: etcQuery,
-          interest: iArr,
-        },
-        {
-          headers: { "Content-Type": `application/json` },
-        }
-      )
-      .then((res) => {
-        setInputData(res.data);
-        setFirst(1);
-      });
+    setIsLoading(true);
+    setIsError(false);
+    try {
+      axios
+        .post(
+          "/tagSearch",
+          {
+            qual: [100, 100, 100],
+            sem: semQuery,
+            etc: etcQuery,
+            interest: iArr,
+          },
+          {
+            headers: { "Content-Type": `application/json` },
+          }
+        )
+        .then((res) => {
+          setInputData(res.data);
+          setIsLoading(false);
+          setFirst(1);
+        });
+    } catch (error) {
+      setIsError(true);
+    }
   };
 
   return (
@@ -258,13 +268,23 @@ export default function Filter() {
               선택완료
             </Button>
           </Flex>
-
-          {inputData && first == 1 ? (
-            <>
+          {isError ? <Flex justify="center">오류가 발생했습니다.</Flex> : ""}
+          {isLoading ? (
+            <Flex justify="center">
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="darkGreen"
+                size="xl"
+              />
+            </Flex>
+          ) : inputData && first == 1 ? (
+            <Box maxW="90rem">
               <Flex mt={5} justify="center" mb="5rem">
                 <CardGrid inputData={inputData} />
               </Flex>
-            </>
+            </Box>
           ) : (
             ""
           )}
@@ -390,6 +410,7 @@ const up_list = [
     "디자인",
     "그림",
     "악기",
+    "기타",
   ],
   ["전체", "기독교"],
   ["전체", "교지/잡지/신문", "문학/문집"],
@@ -412,6 +433,7 @@ const up_list = [
     "인문학",
     "교육학",
     "여성학",
+    "기타",
   ],
   [
     "전체",

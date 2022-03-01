@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "app": "node app",
-    "server": "node server"
+    "server": "nodemon server"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
@@ -35,5 +35,5 @@
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0"
   },
-  "proxy": "http://localhost:3060"
+  "proxy": "http://15.165.130.197"
 }
