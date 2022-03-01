@@ -1,4 +1,4 @@
-import { Input, InputGroup, Button, IconButton } from "@chakra-ui/react";
+import { Input, InputGroup, IconButton } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import React from "react";
 

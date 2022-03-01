@@ -1,5 +1,4 @@
 import { Flex,Text,Spacer} from "@chakra-ui/react";
-import TopBar from "./TopBar";
 import React from "react";
 
 export default function mainbottom({ position }) {

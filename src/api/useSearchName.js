@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function useSearchName() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +31,6 @@ export default function useSearchName() {
       setIsError(true);
     }
   };
-  console.log(title);
 
   return { title_search, data, isError, isLoading, handleChange, title };
 }

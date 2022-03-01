@@ -1,4 +1,4 @@
-import { GridItem, Grid, Text, Box, Flex, SimpleGrid } from "@chakra-ui/react";
+import { GridItem, Box, Flex} from "@chakra-ui/react";
 
 export default function FilterName({ name, col }) {
   return (

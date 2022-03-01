@@ -1,5 +1,4 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckFilter from "./FilterButton";
 import BelButton from "./BelButton";
 import { useEffect, useState } from "react";
 

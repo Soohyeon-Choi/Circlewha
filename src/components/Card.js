@@ -3,48 +3,13 @@ import {
   Text,
   Flex,
   Wrap,
-  Spacer,
-  Button,
-  useDisclosure,
-  Grid,
-  GridItem,
+  useDisclosure
+
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
 import Detail from "./Detail";
-import useDetail from "../../pages/api/useDetail";
 
 export default function Card({ value }) {
-  var id = 47;
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const [inputData, setInputData] = useState([
-  //   {
-  //     id: "",
-  //     title: "",
-  //     tag_all: "",
-  //   },
-  // ]);
-
-  // const [lastIdx, setLastIdx] = useState(0);
-
-  // useEffect(async () => {
-  //   try {
-  //     const res = await axios.post("/tagSearch");
-  //     const _inputData = await res.data.map(
-  //       (rowData) => (
-  //         setLastIdx(lastIdx + 1),
-  //         {
-  //           id: rowData.id,
-  //           title: rowData.title,
-  //           tag_all: rowData.tag_all,
-  //         }
-  //       )
-  //     );
-  //     setInputData(inputData.concat(_inputData));
-  //     console.log("inputData :: ", inputData);
-  //   } catch (e) {
-  //     console.error(e.message);
-  //   }
-  // }, []);
 
   const attribute = () => {
     var attri = value.tag_all;
@@ -73,20 +38,23 @@ export default function Card({ value }) {
           isOpen={isOpen}
           id={value.id}
         />
-        <Box
+        <Flex
+          justify="center"
+          alignItems="center"
           borderRadius="50%"
           borderWidth="0.3rem"
-          borderColor="darkgreen"
+          borderColor="darkGreen"
           w="15rem"
           h="15rem"
           onClick={onOpen}
           textAlign="center"
+          bgColor=""
           mb={3}
         >
-          <Text fontWeight="bold" fontSize="2xl" padding="30">
+          <Text fontWeight="bold" fontSize="2xl">
             {value && value.title}
           </Text>
-        </Box>
+        </Flex>
 
         <Wrap align="center" justify="center">
           {attribute().map((tag, index) => (
@@ -96,16 +64,13 @@ export default function Card({ value }) {
               mb={2}
               bgColor="hoverGreen"
               alignItems="center"
-              borderRadius="10%"
+              borderRadius={5}
             >
-              <Box color="#006540" key={index}>
-                {tag}
-              </Box>
+              <Box key={index}>{tag}</Box>
             </Box>
           ))}
         </Wrap>
       </Flex>
-      {/* </Grid> */}
     </Box>
   );
 }

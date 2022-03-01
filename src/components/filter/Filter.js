@@ -8,7 +8,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { BsArrowClockwise } from "react-icons/bs";
 import GridInterest from "./GridInterest";
 import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
@@ -138,7 +137,6 @@ export default function Filter() {
       }
     }
     iArr.push([v1, v2]);
-    console.log("v1, v2: " + v1 + ", " + v2);
   }
 
   const onClick = async () => {
@@ -155,7 +153,6 @@ export default function Filter() {
         { headers: { "Content-Type": `application/json` } }
       )
       .then((res) => {
-        console.log(res);
         setInputData(res.data);
         setFirst(1);
       });
@@ -178,38 +175,25 @@ export default function Filter() {
         }
       )
       .then((res) => {
-        console.log(res);
         setInputData(res.data);
         setFirst(1);
       });
   };
 
-  console.log("check inputData :: ", inputData);
-
   return (
     <>
       <Flex flexDirection="column" justify="center">
-        <Box maxW="100rem">
+        <Box maxW="100rem" px="3%" py="2%">
           <Flex justifyContent="end">
-            <ButtonGroup spacing={3} size="md">
+            <ButtonGroup spacing={3} mb={2} size="md">
               <InitButton init={init} />
               <Button onClick={listAll} color="darkGreen" variant="ghost">
                 전체보기
               </Button>
-              <Button onClick={onClick} color="darkGreen" variant="ghost">
-                선택완료
-              </Button>
             </ButtonGroup>
           </Flex>
           <Box>
-            <Grid
-              w="100%"
-              h="100%"
-              px="3%"
-              py="2%"
-              templateColumns="repeat(10, 1fr)"
-              gap={1}
-            >
+            <Grid w="100%" h="100%" templateColumns="repeat(10, 1fr)" gap={1}>
               <FilterName col={2} name="소속" />
               <FilterName col={2} name="단과대학" />
               <FilterName col={3} name="학부/전공" />
@@ -263,17 +247,27 @@ export default function Filter() {
               ))}
             </Grid>
           </Box>
-
-          <Flex justify="center" direction="column">
-            {inputData && first == 1 ? (
-              <>
-                <Text>검색결과: {inputData.length}개</Text>{" "}
-                <CardGrid inputData={inputData} />
-              </>
-            ) : (
-              ""
-            )}
+          <Flex mt={2} justify="end" mb={10}>
+            <Button
+              borderWidth="2px"
+              borderColor="darkGreen"
+              onClick={onClick}
+              color="darkGreen"
+              variant="ghost"
+            >
+              선택완료
+            </Button>
           </Flex>
+
+          {inputData && first == 1 ? (
+            <>
+              <Flex mt={5} justify="center" mb="5rem">
+                <CardGrid inputData={inputData} />
+              </Flex>
+            </>
+          ) : (
+            ""
+          )}
         </Box>
       </Flex>
     </>

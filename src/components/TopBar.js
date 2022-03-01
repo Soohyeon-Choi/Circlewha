@@ -1,9 +1,10 @@
-import { Flex, Image, Button, Spacer, Link, ButtonGroup,AlertDialog,AlertDialogOverlay,AlertDialogContent,AlertDialogHeader,AlertDialogBody,AlertDialogFooter } from "@chakra-ui/react";
-import { ViewIcon, SearchIcon,InfoOutlineIcon } from "@chakra-ui/icons";
+import { Flex, Image, Button, Spacer, Link, AlertDialog,AlertDialogOverlay,AlertDialogContent,AlertDialogHeader,AlertDialogBody,AlertDialogFooter } from "@chakra-ui/react";
+import { SearchIcon,InfoOutlineIcon } from "@chakra-ui/icons";
 import logo from "../../public/logo.svg";
-import { useRouter } from "next/router";
 import NextLink from "next/link";
 import React from "react";
+import { MdFilterListAlt } from "react-icons/md";
+
 
 export default function TopBar({ position }) {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -47,7 +48,7 @@ export default function TopBar({ position }) {
       <NextLink href="/tagSearch" passHref>
         <Link>
           <Button
-            leftIcon={<ViewIcon />}
+            leftIcon={<MdFilterListAlt size={20} />}
             color="darkGreen"
             variant="link"
             marginTop="30px"
@@ -64,7 +65,7 @@ export default function TopBar({ position }) {
             leftIcon={<InfoOutlineIcon />}
             color="darkGreen"
             variant="link"
-            marginTop="30px"
+            marginTop="20px"
             marginLeft="30px"
             onClick={() => setIsOpen(true)}
             
