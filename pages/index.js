@@ -10,6 +10,7 @@ export default function Home() {
     <>
     
       <TopBar />
+ 
      
       <Image
         w="100vw"
