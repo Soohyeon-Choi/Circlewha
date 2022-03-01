@@ -23,7 +23,7 @@ export default function TopBar({ position }) {
      
     >
       <NextLink href="/">
-        <Image src={logo.src} width="200px" height="60px"  />
+        <Image src={logo.src} width="150px" height="80px"  marginLeft="15px"/>
       </NextLink>
 
       <Spacer />
