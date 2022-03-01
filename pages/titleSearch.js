@@ -3,7 +3,7 @@ import SearchBar from "../src/components/SearchBar";
 import CardGrid from "../src/components/CardGrid";
 import React from "react";
 import useSearchName from "../src/api/useSearchName";
-import { Flex, Box, Spinner} from "@chakra-ui/react";
+import { Flex, Box, Spinner } from "@chakra-ui/react";
 
 export default function TitleSearch() {
   const { title_search, data, isError, isLoading, title, handleChange } =
@@ -24,7 +24,13 @@ export default function TitleSearch() {
         </Box>
 
         {isLoading ? (
-          <Spinner />
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="darkGreen"
+            size="xl"
+          />
         ) : data ? (
           <Box minW="40rem" maxW="80rem">
             <Flex justify="center">
