@@ -143,7 +143,7 @@ export default function Filter() {
   const onClick = async () => {
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           belong: cateQuery,
           qual: qualQuery,
@@ -164,7 +164,7 @@ export default function Filter() {
     init();
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           qual: [100, 100, 100],
           sem: semQuery,
@@ -225,13 +225,13 @@ export default function Filter() {
               <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
               <FilterName col={10} name="관심분야" />
               {up.map((filter, index) => (
-                <GridItem colSpan={1} bg="lightGreen" borderRadius="7px">
-                  <Text
-                    fontweight="bold"
-                    color="darkGreen"
-                    textAlign="center"
-                    key={index}
-                  >
+                <GridItem
+                  key={index}
+                  colSpan={1}
+                  bg="lightGreen"
+                  borderRadius="7px"
+                >
+                  <Text fontWeight="bold" color="darkGreen" textAlign="center">
                     {filter}
                   </Text>
                 </GridItem>

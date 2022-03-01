@@ -14,7 +14,6 @@ export default function InterestButton({
   }, [reload]);
   return (
     <Button
-      isChecked={true}
       onClick={() => {
         setChecked(!checked);
         addInterest(filter, num);

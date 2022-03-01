@@ -14,7 +14,6 @@ export default function BelButton({
 
   return (
     <Button
-      isChecked={true}
       onClick={() => {
         setChecked(index);
         {
