@@ -1,4 +1,4 @@
-import { Flex, Image, Button, Spacer, Link, AlertDialog,AlertDialogOverlay,AlertDialogContent,AlertDialogHeader,AlertDialogBody,AlertDialogFooter } from "@chakra-ui/react";
+import { Flex, Image, Button, Spacer, Link,Wrap, AlertDialog,AlertDialogOverlay,AlertDialogContent,AlertDialogHeader,AlertDialogBody,AlertDialogFooter, HStack } from "@chakra-ui/react";
 import { SearchIcon,InfoOutlineIcon } from "@chakra-ui/icons";
 import logo from "../../public/logo.svg";
 import NextLink from "next/link";
@@ -20,25 +20,27 @@ export default function TopBar({ position }) {
       position={position}
       px="5"
       py="5"
-      
-     
     >
+      <Flex flexDir="row">
       <NextLink href="/">
-        <Image src={logo.src} width="150px" height="80px"  marginLeft="15px"/>
+        <Image src={logo.src} width="150px" height="80px"  marginLeft="15px" marginRight="330px" />
       </NextLink>
+      <Spacer/>
 
-      <Spacer />
-
-      <Flex flexDir="row" alignItems="center" marginRight="500px">
+     
+      <HStack spacing="100px" >
+      
       <NextLink href="/titleSearch" passHref>
         <Link>
           <Button
             leftIcon={<SearchIcon />}
             mr={5}
             color="darkGreen"
-            marginTop="30px"
             variant="link"
-            marginRight="30px"
+            marginTop="6px"
+            marginRight="2px"
+            
+        
           >
             타이틀 검색
           </Button>
@@ -51,10 +53,7 @@ export default function TopBar({ position }) {
             leftIcon={<MdFilterListAlt size={20} />}
             color="darkGreen"
             variant="link"
-            marginTop="30px"
-            marginLeft="30px"
-            marginRight="30px"
-            
+            marginTop="6px"
           >
             필터 검색
           </Button>
@@ -65,9 +64,9 @@ export default function TopBar({ position }) {
             leftIcon={<InfoOutlineIcon />}
             color="darkGreen"
             variant="link"
-            marginTop="20px"
-            marginLeft="30px"
             onClick={() => setIsOpen(true)}
+            
+          
             
           >
            How to use
@@ -95,8 +94,10 @@ export default function TopBar({ position }) {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
+      </HStack>
+   </Flex>
     
       </Flex>
-    </Flex>
+  
   );
 }
