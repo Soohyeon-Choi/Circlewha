@@ -2,7 +2,7 @@ import {
   Box,
   Text,
   Flex,
-  Spacer,
+  Wrap,
   Spinner,
   Heading,
   Image,
@@ -19,21 +19,21 @@ import useDetail from "../../pages/api/useDetail";
 
 export default function Detail({ isOpen, onOpen, onClose, id }) {
   const { detail, isError, isLoading } = useDetail(id);
-  console.log(detail);
-  console.log(id);
+
   const getField = () => {
     var str = detail && detail.interest_detail;
+    if (str) {
+      var interest = str.split(",");
+      for (var i = 0; i < interest.length; i++) {
+        interest[i] = "#" + interest[i];
+      }
 
-    var interest = str.split(",");
-    for (var i = 0; i < interest.length; i++) {
-      interest[i] = "#" + interest[i];
+      var str2 = detail && detail.exinfo_detail;
+      var exinfo = str2.split(",");
+
+      var field = interest.concat(exinfo);
+      return field;
     }
-
-    var str2 = detail && detail.exinfo_detail;
-    var exinfo = str2.split(",");
-
-    var field = interest.concat(exinfo);
-    return field;
   };
 
   const belong = () => {
@@ -61,20 +61,6 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
     return cond;
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <Flex justify="center">
-  //       <Spinner
-  //         thickness="4px"
-  //         speed="0.65s"
-  //         emptyColor="gray.200"
-  //         color="blue.500"
-  //         size="xl"
-  //       />
-  //     </Flex>
-  //   );
-  // }
-
   if (detail) {
     return (
       <>
@@ -87,6 +73,24 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
               color="white"
             />
             <ModalBody>
+              {isError ? (
+                <Flex justify="center">오류가 발생했습니다.</Flex>
+              ) : (
+                ""
+              )}
+              {isLoading ? (
+                <Flex justify="center">
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="darkGreen"
+                    size="xl"
+                  />
+                </Flex>
+              ) : (
+                ""
+              )}
               <Heading mt={10} mb={2}>
                 {detail.title}
               </Heading>
@@ -94,7 +98,9 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
               <hr />
               <Flex justify="center" mt={5} mb={10}>
                 {detail.logo == "정보없음" ? (
-                  <Box
+                  <Flex
+                    justify="center"
+                    alignItems="center"
                     borderRadius="50%"
                     w="20rem"
                     h="20rem"
@@ -103,10 +109,10 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                     backgroundColor="#fffecf"
                     textAlign="center"
                   >
-                    <Text fontWeight="bold" fontSize="4xl" mt="40%">
+                    <Text fontWeight="bold" fontSize="4xl">
                       {detail.title}
                     </Text>
-                  </Box>
+                  </Flex>
                 ) : (
                   <Image
                     w="20rem"
@@ -117,9 +123,11 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                 )}
               </Flex>
 
-              <Flex m={1}>
-                <Flex mr={4} direction="column">
+              <Flex mr={4} direction="column">
+                <Flex>
                   <Text
+                    m={1}
+                    w="6rem"
                     mb={2}
                     fontSize="1.1rem"
                     fontWeight="bold"
@@ -127,7 +135,26 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                   >
                     소속
                   </Text>
+                  <Wrap>
+                    {belong() &&
+                      belong().map((value, index) => (
+                        <Box
+                          borderRadius={5}
+                          p={1}
+                          mr={2}
+                          mb={2}
+                          bgColor="hoverGreen"
+                          alignItems="center"
+                        >
+                          <Text key={index}>{value}</Text>
+                        </Box>
+                      ))}
+                  </Wrap>
+                </Flex>
+                <Flex>
                   <Text
+                    m={1}
+                    w="6rem"
                     mb={2}
                     fontSize="1.1rem"
                     fontWeight="bold"
@@ -135,7 +162,27 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                   >
                     분야
                   </Text>
+                  <Wrap>
+                    {getField()
+                      ? getField().map((value, index) => (
+                          <Box
+                            borderRadius={5}
+                            p={1}
+                            mr={2}
+                            mb={2}
+                            bgColor="hoverGreen"
+                            alignItems="center"
+                          >
+                            <Text key={index}>{value}</Text>
+                          </Box>
+                        ))
+                      : ""}
+                  </Wrap>
+                </Flex>
+                <Flex>
                   <Text
+                    m={1}
+                    w="6rem"
                     mb={2}
                     fontSize="1.1rem"
                     fontWeight="bold"
@@ -143,46 +190,29 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                   >
                     기타 조건
                   </Text>
-                </Flex>
-                <Box m={1}>
                   <Flex>
-                    {belong() &&
-                      belong().map((value, index) => (
+                    {detail.etccond_detail == "없음" ? (
+                      <Text m={1} ml={3}>
+                        x
+                      </Text>
+                    ) : (
+                      etcCond().map((value, index) => (
                         <Box
+                          borderRadius={5}
+                          p={1}
                           mr={2}
                           mb={2}
-                          bgColor="middleGreen"
+                          bgColor="hoverGreen"
                           alignItems="center"
                         >
                           <Text key={index}>{value}</Text>
                         </Box>
-                      ))}
-                  </Flex>
-                  <Flex>
-                    {getField().map((value, index) => (
-                      <Flex
-                        mr={2}
-                        mb={2}
-                        bgColor="middleGreen"
-                        alignItems="center"
-                      >
-                        <Text key={index}>{value}</Text>
-                      </Flex>
-                    ))}
-                  </Flex>
-                  <Flex>
-                    {detail.etccond_detail == "없음" ? (
-                      <Text ml={3}>x</Text>
-                    ) : (
-                      etcCond().map((value, index) => (
-                        <Flex mr={2} bgColor="middleGreen" alignItems="center">
-                          <Text key={index}>{value}</Text>
-                        </Flex>
                       ))
                     )}
                   </Flex>
-                </Box>
+                </Flex>
               </Flex>
+
               <Flex m={1} mb={2}>
                 <Text
                   minW="5rem"
@@ -203,7 +233,12 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                 <Text ml={3}>{detail.period_detail}</Text>
               </Flex>
               <Flex m={1} mb={2} alignItems="center">
-                <Text fontSize="1.1rem" fontWeight="bold" color="darkGreen">
+                <Text
+                  minW="5rem"
+                  fontSize="1.1rem"
+                  fontWeight="bold"
+                  color="darkGreen"
+                >
                   활동 시간
                 </Text>
                 <Text ml={3}>{detail.time}</Text>
@@ -215,18 +250,13 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
                 <Text ml={3}>{detail.when_detail}</Text>
               </Flex>
 
-              <Flex m={1}>
-                <Text
-                  mr={3}
-                  mb={2}
-                  fontSize="1.1rem"
-                  fontWeight="bold"
-                  color="darkGreen"
-                  alignItems="center"
-                >
+              <Flex m={1} mb={2} alignItems="center">
+                <Text fontSize="1.1rem" fontWeight="bold" color="darkGreen">
                   SNS
                 </Text>
-                {detail.link}
+                <Text maxW="30rem" ml={3}>
+                  {detail.link}
+                </Text>
               </Flex>
 
               <Text

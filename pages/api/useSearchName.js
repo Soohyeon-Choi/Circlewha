@@ -31,7 +31,6 @@ export default function useSearchName() {
       setIsError(true);
     }
   };
-  console.log(title);
 
   return { title_search, data, isError, isLoading, handleChange, title };
 }

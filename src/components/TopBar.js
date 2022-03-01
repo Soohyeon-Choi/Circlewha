@@ -1,9 +1,18 @@
-import { Flex, Image, Button, Spacer, Link } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Button,
+  Spacer,
+  Link,
+  IconButton,
+} from "@chakra-ui/react";
 import { ViewIcon, SearchIcon } from "@chakra-ui/icons";
 import logo from "../../public/logo.svg";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
-
+import { MdFilterListAlt } from "react-icons/md";
+import { BiFilterAlt } from "react-icons/bi";
+import { RiFilterFill } from "react-icons/ri";
 import SearchBar from "./SearchBar";
 
 export default function TopBar({ position }) {
@@ -43,7 +52,7 @@ export default function TopBar({ position }) {
       <NextLink href="/tagSearch" passHref>
         <Link>
           <Button
-            leftIcon={<ViewIcon />}
+            leftIcon={<MdFilterListAlt size={20} />}
             color="darkGreen"
             variant="outline"
             border="2px"
