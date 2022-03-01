@@ -19,8 +19,7 @@ import useDetail from "../../pages/api/useDetail";
 
 export default function Detail({ isOpen, onOpen, onClose, id }) {
   const { detail, isError, isLoading } = useDetail(id);
-  console.log(detail);
-  console.log(id);
+
   const getField = () => {
     var str = detail && detail.interest_detail;
     if (str) {
@@ -74,6 +73,11 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
               color="white"
             />
             <ModalBody>
+              {isError ? (
+                <Flex justify="center">오류가 발생했습니다.</Flex>
+              ) : (
+                ""
+              )}
               {isLoading ? (
                 <Flex justify="center">
                   <Spinner

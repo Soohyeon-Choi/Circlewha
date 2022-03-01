@@ -138,7 +138,6 @@ export default function Filter() {
       }
     }
     iArr.push([v1, v2]);
-    console.log("v1, v2: " + v1 + ", " + v2);
   }
 
   const onClick = async () => {
@@ -155,7 +154,6 @@ export default function Filter() {
         { headers: { "Content-Type": `application/json` } }
       )
       .then((res) => {
-        console.log(res);
         setInputData(res.data);
         setFirst(1);
       });
@@ -178,20 +176,17 @@ export default function Filter() {
         }
       )
       .then((res) => {
-        console.log(res);
         setInputData(res.data);
         setFirst(1);
       });
   };
-
-  console.log("check inputData :: ", inputData);
 
   return (
     <>
       <Flex flexDirection="column" justify="center">
         <Box maxW="100rem" px="3%" py="2%">
           <Flex justifyContent="end">
-            <ButtonGroup spacing={3} size="md">
+            <ButtonGroup spacing={3} mb={2} size="md">
               <InitButton init={init} />
               <Button onClick={listAll} color="darkGreen" variant="ghost">
                 전체보기
@@ -254,23 +249,20 @@ export default function Filter() {
             </Grid>
           </Box>
           <Flex mt={2} justify="end" mb={10}>
-            <Button onClick={onClick} color="darkGreen" variant="ghost">
+            <Button
+              borderWidth="2px"
+              borderColor="darkGreen"
+              onClick={onClick}
+              color="darkGreen"
+              variant="ghost"
+            >
               선택완료
             </Button>
           </Flex>
 
           {inputData && first == 1 ? (
             <>
-              <Flex alignItems="center">
-                <Text fontSize="1.5rem" mr={3}>
-                  검색결과
-                </Text>
-                <Text color="darkGreen" fontSize="1.2rem">
-                  {" "}
-                  {inputData.length}개
-                </Text>
-              </Flex>
-              <Flex mt={5} justify="center">
+              <Flex mt={5} justify="center" mb="5rem">
                 <CardGrid inputData={inputData} />
               </Flex>
             </>
