@@ -189,27 +189,17 @@ export default function Filter() {
   return (
     <>
       <Flex flexDirection="column" justify="center">
-        <Box maxW="100rem">
+        <Box maxW="100rem" px="3%" py="2%">
           <Flex justifyContent="end">
             <ButtonGroup spacing={3} size="md">
               <InitButton init={init} />
               <Button onClick={listAll} color="darkGreen" variant="ghost">
                 전체보기
               </Button>
-              <Button onClick={onClick} color="darkGreen" variant="ghost">
-                선택완료
-              </Button>
             </ButtonGroup>
           </Flex>
           <Box>
-            <Grid
-              w="100%"
-              h="100%"
-              px="3%"
-              py="2%"
-              templateColumns="repeat(10, 1fr)"
-              gap={1}
-            >
+            <Grid w="100%" h="100%" templateColumns="repeat(10, 1fr)" gap={1}>
               <FilterName col={2} name="소속" />
               <FilterName col={2} name="단과대학" />
               <FilterName col={3} name="학부/전공" />
@@ -263,17 +253,30 @@ export default function Filter() {
               ))}
             </Grid>
           </Box>
-
-          <Flex justify="center" direction="column">
-            {inputData && first == 1 ? (
-              <>
-                <Text>검색결과: {inputData.length}개</Text>{" "}
-                <CardGrid inputData={inputData} />
-              </>
-            ) : (
-              ""
-            )}
+          <Flex mt={2} justify="end" mb={10}>
+            <Button onClick={onClick} color="darkGreen" variant="ghost">
+              선택완료
+            </Button>
           </Flex>
+
+          {inputData && first == 1 ? (
+            <>
+              <Flex alignItems="center">
+                <Text fontSize="1.5rem" mr={3}>
+                  검색결과
+                </Text>
+                <Text color="darkGreen" fontSize="1.2rem">
+                  {" "}
+                  {inputData.length}개
+                </Text>
+              </Flex>
+              <Flex mt={5} justify="center">
+                <CardGrid inputData={inputData} />
+              </Flex>
+            </>
+          ) : (
+            ""
+          )}
         </Box>
       </Flex>
     </>
