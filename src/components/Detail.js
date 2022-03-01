@@ -15,7 +15,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import useDetail from "../../pages/api/useDetail";
+import useDetail from "../api/useDetail";
 
 export default function Detail({ isOpen, onOpen, onClose, id }) {
   const { detail, isError, isLoading } = useDetail(id);
@@ -24,14 +24,16 @@ export default function Detail({ isOpen, onOpen, onClose, id }) {
     var str = detail && detail.interest_detail;
     if (str) {
       var interest = str.split(",");
+      var str2 = detail && detail.exinfo_detail;
       for (var i = 0; i < interest.length; i++) {
         interest[i] = "#" + interest[i];
       }
-
       var str2 = detail && detail.exinfo_detail;
       var exinfo = str2.split(",");
-
       var field = interest.concat(exinfo);
+      field = field.filter((element) => element !== "#");
+      field = field.filter((element) => element !== "");
+
       return field;
     }
   };

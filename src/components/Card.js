@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import Detail from "./Detail";
-import useDetail from "../../pages/api/useDetail";
 
 export default function Card({ value }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,6 +52,7 @@ export default function Card({ value }) {
           h="15rem"
           onClick={onOpen}
           textAlign="center"
+          bgColor=""
           mb={3}
         >
           <Text fontWeight="bold" fontSize="2xl">
