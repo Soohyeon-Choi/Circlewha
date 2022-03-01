@@ -280,11 +280,11 @@ export default function Filter() {
               />
             </Flex>
           ) : inputData && first == 1 ? (
-            <>
+            <Box maxW="90rem">
               <Flex mt={5} justify="center" mb="5rem">
                 <CardGrid inputData={inputData} />
               </Flex>
-            </>
+            </Box>
           ) : (
             ""
           )}
