@@ -2,8 +2,9 @@ import TopBar from "../src/components/TopBar";
 import SearchBar from "../src/components/SearchBar";
 import CardGrid from "../src/components/CardGrid";
 import React from "react";
+import Mainbottom from "../src/components/mainpagebottom";
 import useSearchName from "../src/api/useSearchName";
-import { Flex, Box, Spinner } from "@chakra-ui/react";
+import { Flex, Box, Spinner, Spacer } from "@chakra-ui/react";
 
 export default function TitleSearch() {
   const { title_search, data, isError, isLoading, title, handleChange } =
@@ -12,7 +13,7 @@ export default function TitleSearch() {
     return <Flex justify="center">오류가 발생했습니다.</Flex>;
   }
   return (
-    <>
+    <Flex flexDirection="column">
       <TopBar />
       <Flex justify="center" align="center" direction="column">
         <Box mt={10} mb={10}>
@@ -40,7 +41,13 @@ export default function TitleSearch() {
         ) : (
           ""
         )}
+
+
       </Flex>
-    </>
+     <Box marginTop="260px">
+      <Mainbottom  />
+      </Box>
+      
+    </Flex>
   );
 }
