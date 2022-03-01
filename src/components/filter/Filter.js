@@ -144,7 +144,7 @@ export default function Filter() {
   const onClick = async () => {
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           belong: cateQuery,
           qual: qualQuery,
@@ -166,7 +166,7 @@ export default function Filter() {
     init();
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           qual: [100, 100, 100],
           sem: semQuery,
