@@ -1,4 +1,4 @@
-import { Input, InputGroup, Button, IconButton } from "@chakra-ui/react";
+import { Input, InputGroup, IconButton } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import React from "react";
 
@@ -35,7 +35,7 @@ export default function SearchBar({ title_search, handleChange, title }) {
         color="darkGreen"
         background="none"
         _focus={{ outline: "none" }}
-        _hover={{ backgroundColor: "hoverGreen" }}
+        _hover={{ background: "hoverGreen" }}
         borderRadius="10rem"
       />
     </InputGroup>

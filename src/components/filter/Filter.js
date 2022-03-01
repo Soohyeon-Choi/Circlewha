@@ -8,7 +8,6 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { BsArrowClockwise } from "react-icons/bs";
 import GridInterest from "./GridInterest";
 import FilterName from "./FilterName";
 import GridFilter from "./GridFilter";
@@ -393,7 +392,7 @@ const up_list = [
     "악기",
   ],
   ["전체", "기독교"],
-  ["전체", "교지/잡지/신문", "문학/문집", "신문"],
+  ["전체", "교지/잡지/신문", "문학/문집"],
   [
     "전체",
     "언어",
@@ -404,7 +403,6 @@ const up_list = [
     "사학",
     "건축",
     "경영/경제",
-    "언어",
     "토론",
     "법학",
     "기술과학",

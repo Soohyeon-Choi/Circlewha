@@ -1,17 +1,5 @@
-import {
-  Box,
-  Text,
-  Flex,
-  Wrap,
-  Spacer,
-  Button,
-  useDisclosure,
-  Grid,
-  GridItem,
-} from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import { Box, Text, Flex, Wrap, useDisclosure } from "@chakra-ui/react";
 import Detail from "./Detail";
-import useDetail from "../../pages/api/useDetail";
 
 export default function Card({ value }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -29,8 +17,6 @@ export default function Card({ value }) {
     <Box
       as="button"
       variant="ghost"
-      _focus="none"
-      _hover="none"
       display="flex"
       flexDirection="column"
       w="100%"
@@ -53,6 +39,7 @@ export default function Card({ value }) {
           h="15rem"
           onClick={onOpen}
           textAlign="center"
+          bgColor=""
           mb={3}
         >
           <Text fontWeight="bold" fontSize="2xl">
@@ -68,9 +55,10 @@ export default function Card({ value }) {
               mb={2}
               bgColor="hoverGreen"
               alignItems="center"
+              key={index}
               borderRadius={5}
             >
-              <Box key={index}>{tag}</Box>
+              <Box>{tag}</Box>
             </Box>
           ))}
         </Wrap>

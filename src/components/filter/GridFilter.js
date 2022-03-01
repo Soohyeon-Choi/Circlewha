@@ -1,4 +1,4 @@
-import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import FilterButton from "./FilterButton";
 
 export default function GridFilter({ arr, onChange, reload }) {

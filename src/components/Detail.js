@@ -7,18 +7,20 @@ import {
   Heading,
   Image,
   Modal,
-  Button,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useDetail from "../api/useDetail";
 
-export default function Detail({ isOpen, onOpen, onClose, id }) {
-  const { detail, isError, isLoading } = useDetail(id);
+export default function Detail({ isOpen, onClose, id }) {
+  const { detail, isError, setIsLoading, isLoading } = useDetail(id);
+
+  useEffect(() => {
+    return () => setIsLoading(false);
+  }, []);
 
   const getField = () => {
     var str = detail && detail.interest_detail;

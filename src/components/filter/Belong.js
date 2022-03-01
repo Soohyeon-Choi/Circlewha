@@ -1,5 +1,4 @@
 import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
-import CheckFilter from "./FilterButton";
 import BelButton from "./BelButton";
 import { useEffect, useState } from "react";
 
@@ -21,6 +20,7 @@ export default function Belong({ arr, onChange, col, num, reload }) {
         {arr &&
           arr.map((filter, index) => (
             <BelButton
+              key={index}
               onChange={onChange}
               checked={checked}
               num={num}

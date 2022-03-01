@@ -12,7 +12,7 @@ var url = require("url");
 const { response } = require("express");
 const sanitizeHtml = require("sanitize-html");
 var db = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "15.165.130.197",
   user: "circlewha",
   password: "circlewha123",
   database: "circle",
@@ -285,6 +285,7 @@ app.prepare().then(() => {
     console.log("*** get tag ***");
     return app.render(req, res, "/tagSearch");
   });
+
 
   server.post("/tagSearch", (req, res) => {
     console.log("*** post tag ***");
