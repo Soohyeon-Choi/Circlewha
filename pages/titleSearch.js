@@ -3,7 +3,7 @@ import SearchBar from "../src/components/SearchBar";
 import CardGrid from "../src/components/CardGrid";
 import React from "react";
 import useSearchName from "./api/useSearchName";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, Spinner, Text } from "@chakra-ui/react";
 
 export default function TitleSearch() {
   const { title_search, data, isError, isLoading, title, handleChange } =
@@ -19,7 +19,15 @@ export default function TitleSearch() {
           title={title}
         />
       </Box>
-      <CardGrid inputData={data} />
+      {isLoading ? (
+        <Spinner />
+      ) : data ? (
+        <>
+          <Text>검색결과: {data.length}개</Text> <CardGrid inputData={data} />
+        </>
+      ) : (
+        ""
+      )}
     </Flex>
   );
 }

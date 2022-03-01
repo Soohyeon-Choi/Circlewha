@@ -1,8 +1,5 @@
 import { Input, InputGroup, Button, IconButton } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { useRouter } from "next/router";
-import { useState, setState } from "react";
-import axios from "axios";
 import React from "react";
 
 export default function SearchBar({ title_search, handleChange, title }) {
@@ -33,9 +30,13 @@ export default function SearchBar({ title_search, handleChange, title }) {
       />
       <IconButton
         icon={<SearchIcon />}
+        size="lg"
         onClick={clickButton}
         color="darkGreen"
         background="none"
+        _focus={{ outline: "none" }}
+        _hover={{ backgroundColor: "hoverGreen" }}
+        borderRadius="10rem"
       />
     </InputGroup>
   );
