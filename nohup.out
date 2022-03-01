@@ -1,0 +1,195 @@
+[33m[nodemon] 2.0.15[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): server.js nodemon.json[39m
+[33m[nodemon] watching extensions: js,json,jsx[39m
+[32m[nodemon] starting `node server.js server`[39m
+events.js:377
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:173:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:562:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}
+event - compiled client and server successfully in 2.2s (620 modules)
+next + express running on port 3060
+wait  - compiling /_error (client and server)...
+event - compiled client and server successfully in 298 ms (621 modules)
+[0mGET /_next/webpack-hmr [33m404[0m 423.450 ms - -[0m
+[0mGET /_next/static/webpack/d7b34a7bf6fd2a1a.webpack.hot-update.json [33m404[0m 27.732 ms - -[0m
+*** get tag ***
+wait  - compiling /tagSearch (client and server)...
+event - compiled client and server successfully in 997 ms (719 modules)
+check inputData ::  []
+Warning: Each child in a list should have a unique "key" prop.
+
+Check the top-level render call using <Grid>. See https://reactjs.org/link/warning-keys for more information.
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:483:20
+    at Filter (webpack-internal:///./src/components/filter/Filter.js:33:104)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Result
+    at EnvironmentProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/react-env/dist/chakra-ui-react-env.cjs.dev.js:120:24)
+    at ColorModeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/color-mode/dist/chakra-ui-color-mode.cjs.dev.js:228:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:127:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/system/dist/chakra-ui-system.cjs.dev.js:57:27)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at ChakraProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/provider/dist/chakra-ui-provider.cjs.dev.js:40:24)
+    at App (webpack-internal:///./pages/_app.js:19:16)
+    at StyleRegistry (/home/ubuntu/Circlewha/node_modules/styled-jsx/dist/index/index.js:671:34)
+    at AppContainer (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:415:29)
+    at AppContainerWithIsomorphicFiberStructure (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:447:57)
+    at div
+    at Body (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:715:21)
+Warning: Each child in a list should have a unique "key" prop.
+
+Check the top-level render call using <SimpleGrid>. See https://reactjs.org/link/warning-keys for more information.
+    at BelButton (webpack-internal:///./src/components/filter/BelButton.js:14:22)
+    at Belong (webpack-internal:///./src/components/filter/Belong.js:18:19)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Grid (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:437:20)
+    at div
+    at Box (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Filter (webpack-internal:///./src/components/filter/Filter.js:33:104)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Result
+    at EnvironmentProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/react-env/dist/chakra-ui-react-env.cjs.dev.js:120:24)
+    at ColorModeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/color-mode/dist/chakra-ui-color-mode.cjs.dev.js:228:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:127:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/system/dist/chakra-ui-system.cjs.dev.js:57:27)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at ChakraProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/provider/dist/chakra-ui-provider.cjs.dev.js:40:24)
+    at App (webpack-internal:///./pages/_app.js:19:16)
+    at StyleRegistry (/home/ubuntu/Circlewha/node_modules/styled-jsx/dist/index/index.js:671:34)
+    at AppContainer (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:415:29)
+    at AppContainerWithIsomorphicFiberStructure (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:447:57)
+    at div
+    at Body (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:715:21)
+Warning: React does not recognize the `isChecked` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `ischecked` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+    at button
+    at Styled(button) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Button (/home/ubuntu/Circlewha/node_modules/@chakra-ui/button/dist/chakra-ui-button.cjs.dev.js:215:15)
+    at BelButton (webpack-internal:///./src/components/filter/BelButton.js:14:22)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Grid (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:437:20)
+    at SimpleGrid (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:735:23)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:483:20
+    at Belong (webpack-internal:///./src/components/filter/Belong.js:18:19)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Grid (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:437:20)
+    at div
+    at Box (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Filter (webpack-internal:///./src/components/filter/Filter.js:33:104)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Result
+    at EnvironmentProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/react-env/dist/chakra-ui-react-env.cjs.dev.js:120:24)
+    at ColorModeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/color-mode/dist/chakra-ui-color-mode.cjs.dev.js:228:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:127:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/system/dist/chakra-ui-system.cjs.dev.js:57:27)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at ChakraProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/provider/dist/chakra-ui-provider.cjs.dev.js:40:24)
+    at App (webpack-internal:///./pages/_app.js:19:16)
+    at StyleRegistry (/home/ubuntu/Circlewha/node_modules/styled-jsx/dist/index/index.js:671:34)
+    at AppContainer (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:415:29)
+    at AppContainerWithIsomorphicFiberStructure (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:447:57)
+    at div
+    at Body (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:715:21)
+Warning: Invalid DOM property `fontweight`. Did you mean `fontWeight`?
+    at p
+    at Styled(p) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Text (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:1019:23)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:483:20
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Grid (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:437:20)
+    at div
+    at Box (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Filter (webpack-internal:///./src/components/filter/Filter.js:33:104)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at div
+    at Styled(div) (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:72:25)
+    at Flex (/home/ubuntu/Circlewha/node_modules/@chakra-ui/layout/dist/chakra-ui-layout.cjs.dev.js:396:25)
+    at Result
+    at EnvironmentProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/react-env/dist/chakra-ui-react-env.cjs.dev.js:120:24)
+    at ColorModeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/color-mode/dist/chakra-ui-color-mode.cjs.dev.js:228:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@emotion/react/dist/emotion-element-e89f38a3.cjs.dev.js:127:21)
+    at ThemeProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/system/dist/chakra-ui-system.cjs.dev.js:57:27)
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at /home/ubuntu/Circlewha/node_modules/@chakra-ui/hooks/dist/chakra-ui-hooks.cjs.dev.js:265:23
+    at ChakraProvider (/home/ubuntu/Circlewha/node_modules/@chakra-ui/provider/dist/chakra-ui-provider.cjs.dev.js:40:24)
+    at App (webpack-internal:///./pages/_app.js:19:16)
+    at StyleRegistry (/home/ubuntu/Circlewha/node_modules/styled-jsx/dist/index/index.js:671:34)
+    at AppContainer (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:415:29)
+    at AppContainerWithIsomorphicFiberStructure (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:447:57)
+    at div
+    at Body (/home/ubuntu/Circlewha/node_modules/next/dist/server/render.js:715:21)
+[0mGET /tagSearch [32m200[0m 1393.212 ms - -[0m
+[0mGET /_next/static/webpack/d7b34a7bf6fd2a1a.webpack.hot-update.json [33m404[0m 703.114 ms - -[0m
+*** get tag ***
+check inputData ::  []
+[0mGET /tagSearch [32m200[0m 137.195 ms - -[0m
+[0mGET /_next/static/chunks/webpack.js?ts=1646077174231 [32m200[0m 5.903 ms - -[0m
+[0mGET /_next/static/chunks/react-refresh.js?ts=1646077174231 [32m200[0m 6.124 ms - -[0m
+[0mGET /_next/static/chunks/pages/tagSearch.js?ts=1646077174231 [32m200[0m 91.564 ms - -[0m
+[0mGET /_next/static/development/_buildManifest.js?ts=1646077174231 [32m200[0m 11.327 ms - 318[0m
+[0mGET /_next/static/development/_ssgManifest.js?ts=1646077174231 [32m200[0m 5.743 ms - 76[0m
+[0mGET /_next/static/chunks/main.js?ts=1646077174231 [32m200[0m 7.404 ms - -[0m
+[0mGET /_next/static/chunks/pages/_app.js?ts=1646077174231 [32m200[0m 8.925 ms - -[0m
+[0mGET /_next/static/development/_middlewareManifest.js?ts=1646077174231 [32m200[0m 1.395 ms - 92[0m
+[0mGET /_next/static/media/logo.2ddd84eb.svg [32m200[0m 1.470 ms - -[0m
+[33m[nodemon] 2.0.15[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): server.js nodemon.json[39m
+[33m[nodemon] watching extensions: js,json,jsx[39m
+[32m[nodemon] starting `node server.js server`[39m
+events.js:377
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+Emitted 'error' event on ReadStream instance at:
+    at internal/fs/streams.js:173:14
+    at FSReqCallback.wrapper [as oncomplete] (fs.js:562:5) {
+  errno: -9,
+  code: 'EBADF',
+  syscall: 'read'
+}

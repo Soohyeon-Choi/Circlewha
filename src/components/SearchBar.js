@@ -1,11 +1,8 @@
 import { Input, InputGroup, Button, IconButton } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { useRouter } from "next/router";
-import { useState, setState } from "react";
-import axios from "axios";
 import React from "react";
 
-export default function SearchBar({ title_search, handleChange }) {
+export default function SearchBar({ title_search, handleChange, title }) {
   const pressEnter = (event) => {
     const { key } = event;
     if (key == "Enter") {
@@ -25,16 +22,21 @@ export default function SearchBar({ title_search, handleChange }) {
         onChange={(event) => handleChange(event)}
         onKeyPress={(event) => pressEnter(event)}
         htmlSize={20}
-        width="auto"
+        width="30rem"
         placeholder="동아리 이름 검색"
-        color="#000000"
-        focusBorderColor="#3b5735"
+        value={title}
+        color="black"
+        focusBorderColor="darkGreen"
       />
       <IconButton
         icon={<SearchIcon />}
+        size="lg"
         onClick={clickButton}
-        color="#3b5735"
+        color="darkGreen"
         background="none"
+        _focus={{ outline: "none" }}
+        _hover={{ backgroundColor: "hoverGreen" }}
+        borderRadius="10rem"
       />
     </InputGroup>
   );

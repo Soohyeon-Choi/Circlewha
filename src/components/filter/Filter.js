@@ -27,6 +27,7 @@ export default function Filter() {
   const [majorArray, setMajorArray] = useState([]);
   const [reload, setReload] = useState(false);
   const [inputData, setInputData] = useState([]);
+  const [first, setFirst] = useState(0);
   const iArr = [];
 
   const onCategoryChange = (index, filter) => {
@@ -51,7 +52,6 @@ export default function Filter() {
       setCollArray([]);
       setMajorArray([]);
     }
-    console.log(cateQuery);
   };
 
   const onCollChange = (index, filter) => {
@@ -70,7 +70,6 @@ export default function Filter() {
         setMajorArray(major[index]);
       }
     }
-    console.log(cateQuery);
   };
 
   const onMajorChange = (index, filter) => {
@@ -81,7 +80,6 @@ export default function Filter() {
       cateQuery[2] = filter;
       setCateQuery(cateQuery);
     }
-    console.log(cateQuery);
   };
 
   const onQualChange = (index) => {
@@ -92,7 +90,6 @@ export default function Filter() {
       qualQuery[index] = -1;
       setQualQuery(qualQuery);
     }
-    //console.log(qualQuery);
   };
 
   const onSemChange = (index) => {
@@ -103,7 +100,6 @@ export default function Filter() {
       semQuery[index] = -1;
       setSemQuery(semQuery);
     }
-    //console.log(semQuery);
   };
 
   const init = () => {
@@ -120,6 +116,7 @@ export default function Filter() {
     setInterestQuery(interestQuery);
 
     setInputData();
+    setFirst(0);
   };
 
   const onEtcChange = (index) => {
@@ -130,7 +127,6 @@ export default function Filter() {
       etcQuery[index] = -1;
       setEtcQuery(etcQuery);
     }
-    //console.log(etcQuery);
   };
 
   for (var key in interestQuery) {
@@ -148,7 +144,7 @@ export default function Filter() {
   const onClick = async () => {
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           belong: cateQuery,
           qual: qualQuery,
@@ -161,6 +157,7 @@ export default function Filter() {
       .then((res) => {
         console.log(res);
         setInputData(res.data);
+        setFirst(1);
       });
   };
 
@@ -169,7 +166,7 @@ export default function Filter() {
     init();
     axios
       .post(
-        "http://localhost:3060/tagSearch",
+        "/tagSearch",
         {
           qual: [100, 100, 100],
           sem: semQuery,
@@ -183,6 +180,7 @@ export default function Filter() {
       .then((res) => {
         console.log(res);
         setInputData(res.data);
+        setFirst(1);
       });
   };
 
@@ -190,85 +188,94 @@ export default function Filter() {
 
   return (
     <>
-    <div class="filter">
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" justify="center">
         <Box maxW="100rem">
           <Flex justifyContent="end">
             <ButtonGroup spacing={3} size="md">
               <InitButton init={init} />
-              <Button onClick={listAll} color="#006540" variant="ghost">
+              <Button onClick={listAll} color="darkGreen" variant="ghost">
                 전체보기
               </Button>
-              <Button onClick={onClick} color="#006540" variant="ghost">
+              <Button onClick={onClick} color="darkGreen" variant="ghost">
                 선택완료
               </Button>
             </ButtonGroup>
           </Flex>
-          <Grid
-            w="100%"
-            h="100%"
-            px="3%"
-            py="2%"
-            templateRows="repeat(17, 1fr)"
-            templateColumns="repeat(10, 1fr)"
-            gap={1}
-          >
-            <FilterName col={2} name="소속" />
-            <FilterName col={2} name="단과대학" />
-            <FilterName col={3} name="학부/전공" />
-            <FilterName col={1} name="지원조건" />
-            <FilterName col={1} name="필수활동학기" />
-            <FilterName col={1} name="기타조건" />
-            <Belong
-              col={2}
-              arr={category}
-              reload={reload}
-              onChange={onCategoryChange}
-            />
-            <Belong
-              col={2}
-              arr={collArray}
-              reload={reload}
-              onChange={onCollChange}
-            />
-            <Belong
-              col={3}
-              arr={majorArray}
-              reload={reload}
-              onChange={onMajorChange}
-            />
-
-            <GridFilter arr={cond} onChange={onQualChange} reload={reload} />
-            <GridFilter arr={sem} onChange={onSemChange} reload={reload} />
-            <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
-            <FilterName col={10} name="관심분야" />
-            {up.map((filter, index) => (
-              <GridItem colSpan={1} bg="#eaeeea" borderRadius="7px">
-                <Text
-                  fontweight="bold"
-                  color="#006540"
-                  textAlign="center"
-                  key={index}
-                >
-                  {filter}
-                </Text>
-              </GridItem>
-            ))}
-            {up_list.map((list, index) => (
-              <GridInterest
+          <Box>
+            <Grid
+              w="100%"
+              h="100%"
+              px="3%"
+              py="2%"
+              templateColumns="repeat(10, 1fr)"
+              gap={1}
+            >
+              <FilterName col={2} name="소속" />
+              <FilterName col={2} name="단과대학" />
+              <FilterName col={3} name="학부/전공" />
+              <FilterName col={1} name="지원조건" />
+              <FilterName col={1} name="필수활동학기" />
+              <FilterName col={1} name="기타조건" />
+              <Belong
+                col={2}
+                arr={category}
                 reload={reload}
-                arr={list}
-                key={index}
-                num={index + 1}
-                interestQuery={interestQuery}
-                setInterestQuery={setInterestQuery}
+                onChange={onCategoryChange}
               />
-            ))}
-          </Grid>
+              <Belong
+                col={2}
+                arr={collArray}
+                reload={reload}
+                onChange={onCollChange}
+              />
+              <Belong
+                col={3}
+                arr={majorArray}
+                reload={reload}
+                onChange={onMajorChange}
+              />
+
+              <GridFilter arr={cond} onChange={onQualChange} reload={reload} />
+              <GridFilter arr={sem} onChange={onSemChange} reload={reload} />
+              <GridFilter arr={etc} onChange={onEtcChange} reload={reload} />
+              <FilterName col={10} name="관심분야" />
+              {up.map((filter, index) => (
+                <GridItem colSpan={1} bg="lightGreen" borderRadius="7px">
+                  <Text
+                    fontweight="bold"
+                    color="darkGreen"
+                    textAlign="center"
+                    key={index}
+                  >
+                    {filter}
+                  </Text>
+                </GridItem>
+              ))}
+              {up_list.map((list, index) => (
+                <GridInterest
+                  reload={reload}
+                  arr={list}
+                  key={index}
+                  num={index + 1}
+                  interestQuery={interestQuery}
+                  setInterestQuery={setInterestQuery}
+                />
+              ))}
+            </Grid>
+          </Box>
+
+          <Flex justify="center" direction="column">
+            {inputData && first == 1 ? (
+              <>
+                <Text>검색결과: {inputData.length}개</Text>{" "}
+                <CardGrid inputData={inputData} />
+              </>
+            ) : (
+              ""
+            )}
+          </Flex>
         </Box>
-        <CardGrid inputData={inputData} />
       </Flex>
-    </div>
     </>
   );
 }
@@ -340,40 +347,11 @@ const major = [
   [],
 ];
 
-const major_1 = [
-  "국어국문학과",
-  "불어불문학과",
-  "영어영문학과",
-  "사학과",
-  "철학과",
-];
-
-const major_2 = ["심리학과", "행정학과", "커뮤니케이션 미디어학부"];
-
-const major_3 = ["화학 나노과학전공", "생명과학전공"];
-
-const major_4 = [
-  "컴퓨터공학과",
-  "사이버보안전공",
-  "전자전기공학과",
-  "식품공학과",
-  "화학신소재공학과",
-  "기후 에너지시스템공학과",
-];
-
-const major_5 = ["디자인학부"];
-
-const major_8 = ["융합보건학과"];
-
-const major_12 = ["뇌 인지과학과", "국제학부"];
-
 const cond = ["새내기만", "학번무관", "전공무관"];
 
 const sem = ["1학기", "2학기", "3학기", "4학기", "그 외"];
 
 const etc = ["회비X", "동방O", "면접X", "상시모집"];
-
-const list = ["up_1", "up_2", "up_3"];
 
 const up = [
   "기타",
