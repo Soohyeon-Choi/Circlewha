@@ -1,9 +1,9 @@
-import { Button, Grid, SimpleGrid } from "@chakra-ui/react";
+import { Button, GridItem, SimpleGrid } from "@chakra-ui/react";
 import FilterButton from "./FilterButton";
 
 export default function GridFilter({ arr, onChange, reload }) {
   return (
-    <Grid
+    <GridItem
       h="13rem"
       overflowX="hidden"
       overflowY="auto"
@@ -22,6 +22,6 @@ export default function GridFilter({ arr, onChange, reload }) {
             />
           ))}
       </SimpleGrid>
-    </Grid>
+    </GridItem>
   );
 }
