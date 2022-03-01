@@ -34,7 +34,7 @@ export default function Card({ value }) {
           alignItems="center"
           borderRadius="50%"
           borderWidth="0.3rem"
-          borderColor="darkGreen"
+          borderColor="middleGreen"
           w="15rem"
           h="15rem"
           onClick={onOpen}

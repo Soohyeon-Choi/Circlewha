@@ -109,8 +109,7 @@ export default function Detail({ isOpen, onClose, id }) {
                     w="20rem"
                     h="20rem"
                     borderWidth="0.3rem"
-                    borderColor="#006540"
-                    backgroundColor="#fffecf"
+                    borderColor="middleGreen"
                     textAlign="center"
                   >
                     <Text fontWeight="bold" fontSize="4xl">
