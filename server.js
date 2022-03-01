@@ -233,7 +233,6 @@ function makesql(bval) {
     if (sql_interest.startsWith("( OR ")) {
       sql_interest = sql_interest.replace("( OR ", "(");
     }
-    //console.log('sql_interest: '+sql_interest);
   }
 
   var button_arr = [sql_belong, sql_qual, sql_period, sql_etc, sql_interest];
@@ -248,7 +247,6 @@ function makesql(bval) {
     sql = sql.replace("AND )", ")");
   }
 
-  //console.log('최종: ' + sql);
   return sql;
 }
 
@@ -312,8 +310,6 @@ app.prepare().then(() => {
         return res.send(rows);
       }
     });
-
-    //return app.render(req, res, '/tagSearch');
   });
 
   server.get("/title", (request, response) => {
