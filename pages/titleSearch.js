@@ -2,7 +2,7 @@ import TopBar from "../src/components/TopBar";
 import SearchBar from "../src/components/SearchBar";
 import CardGrid from "../src/components/CardGrid";
 import React from "react";
-import useSearchName from "./api/useSearchName";
+import useSearchName from "../src/api/useSearchName";
 import { Flex, Box, Spinner, Text } from "@chakra-ui/react";
 
 export default function TitleSearch() {

@@ -11,9 +11,7 @@ export default function useDetail(id) {
       setIsLoading(true);
       setIsError(false);
       try {
-        const response = await axios.get(
-          `http://localhost:3060/get-detail?num=${id}`
-        );
+        const response = await axios.get(`/get-detail?num=${id}`);
         setIsLoading(false);
         setDetail(response.data.data[0]);
       } catch (error) {
