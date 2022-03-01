@@ -73,20 +73,22 @@ export default function Card({ value }) {
           isOpen={isOpen}
           id={value.id}
         />
-        <Box
+        <Flex
+          justify="center"
+          alignItems="center"
           borderRadius="50%"
           borderWidth="0.3rem"
-          borderColor="darkgreen"
+          borderColor="darkGreen"
           w="15rem"
           h="15rem"
           onClick={onOpen}
           textAlign="center"
           mb={3}
         >
-          <Text fontWeight="bold" fontSize="2xl" padding="30">
+          <Text fontWeight="bold" fontSize="2xl">
             {value && value.title}
           </Text>
-        </Box>
+        </Flex>
 
         <Wrap align="center" justify="center">
           {attribute().map((tag, index) => (
@@ -96,16 +98,13 @@ export default function Card({ value }) {
               mb={2}
               bgColor="hoverGreen"
               alignItems="center"
-              borderRadius="10%"
+              borderRadius={5}
             >
-              <Box color="#006540" key={index}>
-                {tag}
-              </Box>
+              <Box key={index}>{tag}</Box>
             </Box>
           ))}
         </Wrap>
       </Flex>
-      {/* </Grid> */}
     </Box>
   );
 }
