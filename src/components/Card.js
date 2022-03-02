@@ -18,6 +18,7 @@ export default function Card({ value }) {
       as="button"
       variant="ghost"
       display="flex"
+      _focus={{ outline: "none" }}
       flexDirection="column"
       w="100%"
       h="100%"

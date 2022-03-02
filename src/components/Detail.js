@@ -233,7 +233,12 @@ export default function Detail({ isOpen, onClose, id }) {
                 </Text>
               </Flex>
               <Flex m={1} mb={2} alignItems="center">
-                <Text fontSize="1.1rem" fontWeight="bold" color="darkGreen">
+                <Text
+                  minW="3rem"
+                  fontSize="1.1rem"
+                  fontWeight="bold"
+                  color="darkGreen"
+                >
                   필수 활동 기간
                 </Text>
                 <Text ml={3}>{detail.period_detail}</Text>
