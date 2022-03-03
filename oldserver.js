@@ -213,9 +213,10 @@ function makesql(bval) {
     }
     for (let j = 0; j < bval[4].length; j++) {
       if (bval[4][j][1] == "전체") {
-        sql_interest +=
-          " OR " + bname[4][0] + " LIKE '%" + bval[4][j][0] + "%'";
+	      console.log('전체태그 선택 : 1')
+        sql_interest +=  " OR " + bname[4][0] + " LIKE " + bval[4][j][0];
       } else {
+	      console.log('전체태그 아님 : 2')
         sql_interest +=
           " OR (" +
           bname[4][0] +
@@ -234,7 +235,6 @@ function makesql(bval) {
     if (sql_interest.startsWith("( OR ")) {
       sql_interest = sql_interest.replace("( OR ", "(");
     }
-    console.log("interest sql: " + sql_interest);
   }
 
   var button_arr = [sql_belong, sql_qual, sql_period, sql_etc, sql_interest];
@@ -286,6 +286,7 @@ app.prepare().then(() => {
     return app.render(req, res, "/tagSearch");
   });
 
+
   server.post("/tagSearch", (req, res) => {
     console.log("*** post tag ***");
     var query;
@@ -321,8 +322,8 @@ app.prepare().then(() => {
       var title = sanitizeHtml(queryData.title);
 
       var sql = `SELECT id,title,tag_all FROM circle_all WHERE title LIKE '%${title}%' `;
-      console.log("sql: " + sql);
-      db.query(sql, (err, rows) => {
+     console.log('sql: '+sql);
+	    db.query(sql, (err, rows) => {
         if (err) {
           throw err;
         }
@@ -352,4 +353,3 @@ app.prepare().then(() => {
     console.log("next + express running on port 3060");
   });
 });
-

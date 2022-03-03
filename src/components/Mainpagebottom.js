@@ -1,12 +1,12 @@
 import { Flex,Text,Spacer} from "@chakra-ui/react";
 import React from "react";
 
-export default function mainbottom({ position }) {
+export default function Mainbottom({ position }) {
 
 
 
   return ( 
-    <Flex bgColor="#3b5735" h="200px" color="#eaeeea" p="35px" mt="3rem" bottom="1"  >
+    <Flex bgColor="#3b5735" h="180px" color="#eaeeea" p="35px" mt="3rem" bottom="1"  >
       <Flex flexDir="column" alignItems="center" ml="50px" marginLeft="3git0px">
       <Text fontSize="4xl" fontWeight="bold" color="#eaeeea" mb="10px">
         circl"EWHA"

@@ -6,7 +6,7 @@ export default function BelButton({ init }) {
   return (
     <Button
       leftIcon={<BsArrowClockwise />}
-      color="#006540"
+      color="darkGreen"
       variant="ghost"
       onClick={() => {
         init();

@@ -127,11 +127,9 @@ export default function Detail({ isOpen, onClose, id }) {
               </Flex>
 
               <Flex mr={4} direction="column">
-                <Flex>
+                <Flex mb={2} m={1} alignItems="center">
                   <Text
-                    m={1}
-                    w="6rem"
-                    mb={2}
+                    minW="6rem"
                     fontSize="1.1rem"
                     fontWeight="bold"
                     color="darkGreen"
@@ -155,11 +153,9 @@ export default function Detail({ isOpen, onClose, id }) {
                       ))}
                   </Wrap>
                 </Flex>
-                <Flex>
+                <Flex mb={2} m={1} alignItems="center">
                   <Text
-                    m={1}
-                    w="6rem"
-                    mb={2}
+                    minW="6rem"
                     fontSize="1.1rem"
                     fontWeight="bold"
                     color="darkGreen"
@@ -184,18 +180,16 @@ export default function Detail({ isOpen, onClose, id }) {
                       : ""}
                   </Wrap>
                 </Flex>
-                <Flex>
+                <Flex mb={2} m={1} alignItems="center">
                   <Text
-                    m={1}
-                    w="6rem"
-                    mb={2}
+                    minW="6rem"
                     fontSize="1.1rem"
                     fontWeight="bold"
                     color="darkGreen"
                   >
                     기타 조건
                   </Text>
-                  <Flex>
+                  <Wrap>
                     {detail.etccond_detail == "없음" ? (
                       <Text m={1} ml={3}>
                         x
@@ -215,11 +209,11 @@ export default function Detail({ isOpen, onClose, id }) {
                         </Box>
                       ))
                     )}
-                  </Flex>
+                  </Wrap>
                 </Flex>
               </Flex>
 
-              <Flex m={1} mb={2}>
+              <Flex m={1} mb={2} mt={1} alignItems="center">
                 <Text
                   minW="5rem"
                   fontSize="1.1rem"
