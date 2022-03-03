@@ -8,5 +8,6 @@
 ## :school: 직접 이용해보세요
 
 ## :school: 기술 스택
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
 
 
