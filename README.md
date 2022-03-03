@@ -11,15 +11,20 @@ http://circlewha.ml/
 ## :school: 구현 영상
 + 메인 화면 
 <img src="https://user-images.githubusercontent.com/85687229/156637154-f6a920b9-2936-4f29-8b1f-df7e074ed27b.gif">
+
 + 타이틀 검색 
 <img src="https://user-images.githubusercontent.com/85687229/156637199-c4b5d854-ea01-4a80-84a7-0ae9877650ca.gif">
+
 + 필터
 <img src="https://user-images.githubusercontent.com/85687229/156637180-089caa14-7c17-47bd-815e-9c7a0216ecfb.gif">
 <img src="https://user-images.githubusercontent.com/85687229/156637226-892ee87c-58de-4ca2-9827-9948682d691e.gif">
+
 + 전체 보기
 <img src="https://user-images.githubusercontent.com/85687229/156637217-10cf4b17-526f-4026-89e1-aaae1dafd045.gif">
+
 + 초기화
 <img src="https://user-images.githubusercontent.com/85687229/156637219-e9d256d2-b6ec-4308-9f80-6cfca561b8e9.gif">
+
 + 상세 화면
 <img src="https://user-images.githubusercontent.com/85687229/156637224-f450b052-0213-4d1f-b491-cc9ef728b33c.gif">
 
